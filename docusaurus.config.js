@@ -70,7 +70,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: '/category/部署',
             position: 'left',
             label: '分类专栏',
           },
