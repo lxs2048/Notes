@@ -167,14 +167,19 @@ item元素浮动后导致container的高度塌陷，main依次在后排列
 ```html
 <style>
 ...
+// highlight-start
 .clearfix{
     clear: both;
 }
+// highlight-end
 </style>
 <div class="container">
-	...
     <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+    // highlight-start
     <div class="clearfix"></div>
+    // highlight-end
 </div>
 ```
 
