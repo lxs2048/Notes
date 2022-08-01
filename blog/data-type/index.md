@@ -1,8 +1,8 @@
 ---
 slug: data-type
-title: js数据类型
+title: JavaScript数据类型
 authors: [dolphin]
-tags: [js数据类型,判断数据类型]
+tags: [JavaScript数据类型,判断数据类型]
 ---
 
 ## JavaScript数据类型
@@ -187,10 +187,7 @@ console.log(Object.prototype.toString.call(new Error()))
 | null      | ❌      | ❌          | ❌           | ✅                         |
 | Array     | ❌      | ✅          | ✅           | ✅                         |
 | Object    | ❌      | ✅          | ✅           | ✅                         |
-| Function  | ❌      | ✅          | ✅           | ✅                         |
+| Function  | ✅      | ✅          | ✅           | ✅                         |
 | Date      | ❌      | ✅          | ✅           | ✅                         |
 | RegExp    | ❌      | ✅          | ✅           | ✅                         |
 | Error     | ❌      | ✅          | ✅           | ✅                         |
-
-
-
