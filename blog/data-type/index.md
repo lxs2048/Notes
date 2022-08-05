@@ -9,6 +9,8 @@ tags: [JavaScript数据类型,判断数据类型]
 
 最新的 ECMAScript 标准定义了 8 种[数据类型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Grammar_and_types#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%B1%BB%E5%9E%8B)：
 
+<!--truncate-->
+
 七种基本数据类型：
 
 * 布尔值（Boolean），有 2 个值分别是：true 和 false.

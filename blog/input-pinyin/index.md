@@ -9,6 +9,8 @@ tags: [拼音触发input]
 
 监听文本输入框的input事件，在输入法拼写汉字但汉字并未实际填充到文本框中时会触发input事件，代码如下
 
+<!--truncate-->
+
 ```html
 <input id="txt" type="text">
 <script>
