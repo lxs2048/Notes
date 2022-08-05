@@ -121,7 +121,7 @@ console.log(BigInt(123).constructor)
 // console.log(undefined.constructor)
 // TypeError: Cannot read properties of null (reading 'constructor')
 // console.log(null.constructor)
-// Array]
+// [Function: Array]
 console.log([].constructor)
 // [Function: Object]
 console.log({}.constructor)
@@ -145,7 +145,7 @@ constructor属性可以被修改，所以结果值不一定准确。
 
 ---
 
-`Object.prototype.toString`示例如下：
+`Object.prototype.toString.call()`示例如下：
 
 ```js
 // '[object Number]'
@@ -191,3 +191,42 @@ console.log(Object.prototype.toString.call(new Error()))
 | Date      | ❌      | ✅          | ✅           | ✅                         |
 | RegExp    | ❌      | ✅          | ✅           | ✅                         |
 | Error     | ❌      | ✅          | ✅           | ✅                         |
+
+**Object.prototype.toString.call()准确判断数据类型原因：**
+
+**Object.prototype.toString() 的作用是返回当前调用者的对象类型**
+
+在Object.prototype.toString()中，toString()的入参不管是什么，它的调用者永远都是Object.prototype，在不加call()情况下，结果永远都是` '[object Object]'`
+
+**使用.call()让Object.prototype.toString这个方法指向传入的数据**
+
+不直接使用数据本身去调用toString()，是因为每个数据类都重新了toString方法
+
+```js
+// 123
+console.log((123).toString())
+// 123
+console.log('123'.toString())
+// true
+console.log(true.toString())
+// Symbol(123)
+console.log(Symbol(123).toString())
+// 123
+console.log(BigInt(123).toString())
+// TypeError: Cannot read properties of undefined (reading 'toString()')
+// console.log(undefined.toString())
+// TypeError: Cannot read properties of null (reading 'toString()')
+// console.log(null.toString())
+// 1,2
+console.log([1,2].toString())
+// [object Object]
+console.log({a:1}.toString())
+// function(){}
+console.log(function(){}.toString())
+// Thu Aug 04 2022 22:29:08 GMT+0800 (中国标准时间)
+console.log(new Date().toString())
+// /\d/g
+console.log(/\d/g.toString())
+// Error
+console.log(new Error().toString())
+```
