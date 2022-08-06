@@ -86,6 +86,11 @@ const config = {
           },
         ],
       },
+      announcementBar: {
+        id: 'announcementBar-3', // Increment on change
+        content:
+          '<span aria-label="star" role="img" class="lg-screens-only">⭐</span> If you need any help, please contact us. Thanks for your support! <span aria-label="heart" role="img" class="lg-screens-only">❤️</span>',
+      },
       footer: {
         style: 'light',
         copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
