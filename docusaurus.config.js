@@ -34,6 +34,7 @@ const config = {
     defaultLocale: 'zh-Hans',
     locales: ['zh-Hans'],
   },
+  plugins: ['docusaurus-plugin-sass'],
 
   presets: [
     [
@@ -53,7 +54,7 @@ const config = {
           editUrl:PRO_URL,
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/custom.scss'),
         },
       }),
     ],
@@ -64,6 +65,7 @@ const config = {
     ({
       navbar: {
         title: SITE_TITLE,
+        hideOnScroll: true,
         logo: {
           alt: 'My Site Logo',
           src: 'img/logosc62eccf4c.png',
@@ -72,14 +74,15 @@ const config = {
           {
             type: 'doc',
             docId: '/category/部署',
-            position: 'left',
+            position: 'right',
             label: '分类专栏',
           },
-          {to: '/blog', label: '博客', position: 'left'},
+          {to: '/blog', label: '博客', position: 'right'},
           {
             href: GITHUB_URL,
-            label: 'GitHub',
+            className: 'header-github-link',
             position: 'right',
+            'aria-label': 'Github repository'
           },
         ],
       },
