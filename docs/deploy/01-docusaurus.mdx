@@ -124,3 +124,40 @@ sidebar_position: 0
 配置docId的默认地址，如下：
 
 `docId: '/category/部署'`
+
+### mdx
+
+将文件的后缀改为.mdx就可以使用以下案例
+
+**详细信息展现元素**
+
+<details>
+  <summary>The Details disclosure element</summary>
+  <p>https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details</p>
+</details>
+
+**Tabs**与**CodeBlock**
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+
+<Tabs>
+  <TabItem value="apple" label="苹果" default>
+    这是个苹果 🍎
+    <CodeBlock
+        language="jsx"
+        title="/src/components/HelloCodeTitle.js"
+        showLineNumbers>
+        {`function HelloCodeTitle(props) {
+  return <h1>你好，{props.name}</h1>;
+}`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="orange" label="橙子">
+    这是个橙子 🍊
+  </TabItem>
+  <TabItem value="banana" label="香蕉">
+    这是个香蕉 🍌
+  </TabItem>
+</Tabs>
