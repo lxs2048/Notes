@@ -2,6 +2,10 @@
 sidebar_position: 2
 ---
 
+:::tip 作用
+工作中不需要每次打包以后，手动打开xshell等工具将构建产物复制到测试环境指定位置
+:::
+
 # vscode同步文件到服务器
 
 VSCode安装插件Deploy
@@ -44,6 +48,8 @@ VSCode安装插件Deploy
 ```
 
 秘钥保存到了`D:\\server\\CI`，获取秘钥[参考](/docs/deploy/CICD持续集成)
+
+无秘钥可以使用password参数[vs-deploy](https://github.com/mkloubert/vs-deploy/wiki)
 
 deployOnSave设置为false可以取消保存后自动同时，使用手动同步方式，使用Deploy current file / folder推送文件或文件夹
 
