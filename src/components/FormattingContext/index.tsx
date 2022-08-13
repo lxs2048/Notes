@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './styles.module.css';
 function FormattingContext() {
   return (
-    <>
+    <div id={styles['formatting-custom-box']}>
       <div id={styles.margin}>margin:20px;</div>
       <div id={styles.bfc}>
         <div id={styles['containing-block']}>
@@ -25,7 +25,7 @@ function FormattingContext() {
         </div>
         block formatting context/margin:20px
       </div>
-    </>
+    </div>
   )
 }
 
@@ -33,7 +33,7 @@ export default FormattingContext
 
 export const FormattingContextBase = ()=>{
   return (
-    <>
+    <div id={styles['formatting-custom-box']}>
       <div id={styles.margin}>margin:20px;</div>
       <div id={styles.bfc}>
         <div id={styles['containing-block']}>
@@ -44,13 +44,13 @@ export const FormattingContextBase = ()=>{
         </div>
         block formatting context/margin:20px
       </div>
-    </>
+    </div>
   )
 }
 
 export const FormattingContextFloat = ()=>{
   return (
-    <>
+    <div id={styles['formatting-custom-box']}>
       <div id={styles.margin}>margin:20px;</div>
       <div id={styles.bfc}>
         <div id={styles['containing-block']}>
@@ -65,12 +65,12 @@ export const FormattingContextFloat = ()=>{
         </div>
         block formatting context/margin:20px
       </div>
-    </>
+    </div>
   )
 }
 export const FormattingContextPosition = ()=>{
   return (
-    <>
+    <div id={styles['formatting-custom-box']}>
       <div id={styles.margin}>margin:20px;</div>
       <div id={styles.bfc}>
         <div id={styles['containing-block']}>
@@ -89,6 +89,6 @@ export const FormattingContextPosition = ()=>{
         </div>
         block formatting context/margin:20px
       </div>
-    </>
+    </div>
   )
 }
