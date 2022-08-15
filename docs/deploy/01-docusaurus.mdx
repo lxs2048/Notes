@@ -167,3 +167,35 @@ import CodeBlock from '@theme/CodeBlock';
 plugin-content-docs=>[草稿配置](https://docusaurus.io/zh-CN/docs/api/plugins/@docusaurus/plugin-content-docs#draft)
 
 一个布尔值，表明文档处于未完成状态。 文档草稿只会在开发模式下显示。
+
+### 国际化
+
+配置`docusaurus.config.js`
+
+默认中文翻译为英文(鸡肋，学习使用)，[参照](https://docusaurus.io/zh-CN/docs/i18n/tutorial#configure-your-site)
+
+```json
+i18n: {
+  defaultLocale: 'zh-CN',
+  locales: ['zh-CN','en'],
+  localeConfigs:{
+    en:{
+      label:'English'
+    },
+    'zh-CN':{
+      label:'中文'
+    }
+  }
+},
+//items配置导航菜单
+{
+  type: 'localeDropdown',
+  position: 'right',
+},
+```
+
+翻译插件数据
+
+```
+npm run write-translations -- --locale zh-Hans
+```

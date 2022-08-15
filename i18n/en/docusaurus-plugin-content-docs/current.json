@@ -1,0 +1,38 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.部署": {
+    "message": "部署",
+    "description": "The label for category 部署 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.每日一题": {
+    "message": "每日一题",
+    "description": "The label for category 每日一题 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.react源码解析": {
+    "message": "react源码解析",
+    "description": "The label for category react源码解析 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.性能优化": {
+    "message": "性能优化",
+    "description": "The label for category 性能优化 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.版本控制": {
+    "message": "版本控制",
+    "description": "The label for category 版本控制 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.JavaScript": {
+    "message": "JavaScript",
+    "description": "The label for category JavaScript in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.CSS": {
+    "message": "CSS",
+    "description": "The label for category CSS in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.工具": {
+    "message": "工具",
+    "description": "The label for category 工具 in sidebar tutorialSidebar"
+  }
+}
