@@ -1,6 +1,6 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-
+require('dotenv').config();
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const GITHUB_NAME = 'hyodage'
@@ -46,6 +46,9 @@ const config = {
     'docusaurus-plugin-sass',
     'plugin-image-zoom'
   ],
+  customFields:{
+    authSourceCode:process.env.AUTHSOURCECODE
+  },
   presets: [
     [
       'classic',
