@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 :::tip 作用
@@ -10,7 +10,7 @@ sidebar_position: 2
 
 VSCode安装插件Deploy
 
-![image-20220812181027589](img/image-20220812181027589.png)
+![image-20220812181027589](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181715250.png)
 
 根目录配置.vscode/settings.json
 
@@ -53,11 +53,11 @@ VSCode安装插件Deploy
 
 deployOnSave设置为false可以取消保存后自动同时，使用手动同步方式，使用Deploy current file / folder推送文件或文件夹
 
-![image-20220529170523817](img/image-20220529170523817.png)
+![image-20220529170523817](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181715252.png)
 
 不可以使用以上方式同步带有需要过滤的文件，如直接对根文件进行Deploy时node_modules无法过滤掉，也会同步到服务器
 
 需要过滤生效使用以下方式同步所有
 
-![image-20220529170308471](img/image-20220529170308471.png)
+![image-20220529170308471](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181715257.png)
 
