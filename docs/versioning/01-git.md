@@ -1,5 +1,6 @@
 ---
 sidebar_position: 0
+
 ---
 
 # git
@@ -26,7 +27,7 @@ git是一个免费并且开源的分布式版本控制系统。
 
 git文件生命周期如下：
 
-![lifecycle.png](img/1596769782866-d5752745-240f-4950-8829-103ebbee912b.png)
+![lifecycle.png](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181824242.png)
 
 同时，git 又提供了三种（也可以说是四种）不同的记录`状态`
 
@@ -46,7 +47,7 @@ git 提供了三个不同的工作区，用来存放不同的内容
 - 暂存区域
 - Git 仓库
 
-![areas.png](img/1596769831374-8d26602a-8511-45f3-a89f-a68b6c5dbcbc.png)
+![areas.png](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181824239.png)
 
 ## 初始化本地仓库
 
@@ -483,7 +484,7 @@ git push origin --delete [标签名]
 
 远程ID：c275382提交错误内容，本地也都提交上去了
 
-![image-20220304172221686](img/image-20220304172221686.png)
+![image-20220304172221686](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181824241.png)
 
 想要回退到f8c6fde
 
@@ -491,7 +492,7 @@ git push origin --delete [标签名]
 git reset f8c6fde
 ```
 
-![image-20220304172453202](img/image-20220304172453202.png)
+![image-20220304172453202](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181824248.png)
 
 本地可以看到所有相对于f8c6fde更改了的代码
 
