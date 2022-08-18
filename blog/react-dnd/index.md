@@ -3,6 +3,7 @@ slug: react-dnd
 title: react-dnd实践
 authors: [dolphin]
 tags: [拖拽, 拖放, react-dnd]
+
 ---
 
 公司使用react-dnd作为项目拖拽库，一时兴起做个简单的拖拽demo
@@ -57,7 +58,7 @@ const CatdItem = styled.div`
 `;
 ```
 
-![image-20220730215212530](img/image-20220730215212530.png)
+![image-20220730215212530](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181623976.png)
 
 一、DndProvider
 
@@ -216,4 +217,4 @@ const Card = (props) => {
 
 最终效果如下：
 
-![2022_07_30_21_57_36_90](img/2022_07_30_21_57_36_90.gif)
+![2022_07_30_21_57_36_90](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181623982.gif)
