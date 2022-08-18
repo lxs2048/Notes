@@ -206,3 +206,7 @@ npm run write-translations -- --locale zh-Hans
 https://docusaurus.io/zh-CN/docs/deployment#using-environment-variables
 
 把可能敏感的信息放在环境变量中的做法很常见。 然而，在典型的 Docusaurus 网站中， docusauurus.config.js 文件是唯一一个可以接触到 Node.js 环境的地方（参见我们的架构概述）。除此之外的所有东西——MDX 页面，React 组件，等等，都处于客户端中，不能直接访问 process 全局变量。 在这种情况下，你可以考虑使用 customFields 将环境变量传递给客户端
+
+### 静态资源存储
+
+参考[PicGo上传文件](/docs/tools/图床)
