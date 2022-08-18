@@ -53,7 +53,7 @@ JS是按照顺序从上往下依次执行的，可以先理解为这段代码时
 而我们JS引擎线程只会执行执行栈中的事件，执行栈中的代码执行完毕，就会读取事件队列中的事件并添加到执行栈中继续执行，这样反反复复就是我们所谓的**事件循环(Event Loop)**
 
 **图解**
-![002](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181918959.png)
+![002](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181918959.png!blog.guiyexing)
 
 * 执行栈开始顺序执行
 
@@ -207,7 +207,7 @@ console.log(3);
 
 ### 图解宏任务和微任务
 
-![003](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181918982.png)
+![003](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181918982.png!blog.guiyexing)
 
 首先执行一个宏任务，执行结束后判断是否存在微任务，有微任务先执行所有的微任务，再渲染，没有微任务则直接渲染，然后再接着执行下一个宏任务
 

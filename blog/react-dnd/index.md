@@ -58,7 +58,7 @@ const CatdItem = styled.div`
 `;
 ```
 
-![image-20220730215212530](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181623976.png)
+![image-20220730215212530](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181623976.png!blog.guiyexing)
 
 一、DndProvider
 

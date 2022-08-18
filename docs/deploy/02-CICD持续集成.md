@@ -21,7 +21,7 @@ pism
 
 ## 创建秘钥
 
-![image-20220409141857495](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181711553.png)
+![image-20220409141857495](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181711553.png!blog.guiyexing)
 
 创建秘钥然后下载保存私钥
 
@@ -31,7 +31,7 @@ pism
 
 2. 绑定秘钥对
 
-![image-20220409142114509](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181711556.png)
+![image-20220409142114509](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181711556.png!blog.guiyexing)
 
 3. 绑定密钥对后需刷新页面才会显示
 4. 本地xshell验证使用秘钥登录成功
@@ -66,7 +66,7 @@ actions会自动执行执行一次，并且可以看到执行结果。
 
 项目->setting->Secret->Actions->New repository secret
 
-![image-20220410225718892](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181711562.png)
+![image-20220410225718892](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181711562.png!blog.guiyexing)
 
 后续yml文件中的部署步骤中，服务器的ip、端口号、用户名、秘钥、我们都没有直接写在文件里面，为了安全考虑，从secrets中读取
 

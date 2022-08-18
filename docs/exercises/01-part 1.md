@@ -32,7 +32,7 @@ js中数组的本质就是对象，结果为4
 
 ```
 
-![image-20220717141119221](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820826.png)
+![image-20220717141119221](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820826.png!blog.guiyexing)
 
 当一个元素没有相关样式时，才需要从父元素去继承
 
@@ -46,7 +46,7 @@ span，a元素是行级的原因是因为浏览器默认样式表里面没有设
 
 p元素默认样式表*user agent stylesheet*如下
 
-![image-20220717142047289](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820829.png)
+![image-20220717142047289](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820829.png!blog.guiyexing)
 
 ## 为什么浮动的行内元素可以设置宽高
 
@@ -54,7 +54,7 @@ p元素默认样式表*user agent stylesheet*如下
 
 如果设置了浮动，或其他定位，就会自动把display设置为block，就可以设置宽高了，且手动设置`display:inline`也是无效的
 
-![image-20220717142926750](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820830.png)
+![image-20220717142926750](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820830.png!blog.guiyexing)
 
 ## 你会使用多少种方式画三角形
 
@@ -71,7 +71,7 @@ p元素默认样式表*user agent stylesheet*如下
 </div>
 ```
 
-![image-20220717143528785](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820831.png)
+![image-20220717143528785](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820831.png!blog.guiyexing)
 
 除了边框外，还可以使用svg，canvas，裁剪等方式
 
@@ -102,7 +102,7 @@ p元素默认样式表*user agent stylesheet*如下
 
 任何一个方向的内边距，只要设置百分比，一定是相对于父元素的内容宽度
 
-![image-20220717145930742](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820841.png)
+![image-20220717145930742](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820841.png!blog.guiyexing)
 
 ## 图片尺寸的问题
 
@@ -130,7 +130,7 @@ img{
 <img class="none" src="./b.jpeg" alt=""><span>none</span>
 ```
 
-![image-20220717152031467](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820846.png)
+![image-20220717152031467](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820846.png!blog.guiyexing)
 
 ## 浮动的经典问题
 
@@ -155,7 +155,7 @@ img{
 
 为什么main这个div的文字表现如下：
 
-![image-20220717153321010](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820564.png)
+![image-20220717153321010](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820564.png!blog.guiyexing)
 
 item元素浮动后导致container的高度塌陷，main依次在后排列
 
@@ -202,7 +202,7 @@ item元素浮动后导致container的高度塌陷，main依次在后排列
 filter:grayscale(1);
 ```
 
-![image-20220717154638376](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820569.png)
+![image-20220717154638376](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181820569.png!blog.guiyexing)
 
 ## 什么是containing block
 

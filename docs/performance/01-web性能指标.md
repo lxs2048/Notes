@@ -92,23 +92,23 @@ Important metrics to measure
 
 - [First Contentful Paint (FCP)](https://web.dev/fcp/)
 
-  ![image-20220718224052362](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906395.png)
+  ![image-20220718224052362](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906395.png!blog.guiyexing)
 
 - [Largest Contentful Paint (LCP)](https://web.dev/lcp/)
-  ![image-20220718224401723](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906396.png)
+  ![image-20220718224401723](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906396.png!blog.guiyexing)
 
 - [First Input Delay (FID)](https://web.dev/fid/)
-  ![image-20220718225408837](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906402.png)
+  ![image-20220718225408837](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906402.png!blog.guiyexing)
 
 - [Time to Interactive (TTI)](https://web.dev/tti/)
-  ![image-20220718225805746](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906403.png)
+  ![image-20220718225805746](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906403.png!blog.guiyexing)
 
 - [Total Blocking Time (TBT)](https://web.dev/tbt/)
 
-  ![Total Blocking Time](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906405.png)
+  ![Total Blocking Time](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906405.png!blog.guiyexing)
 
 - [Cumulative Layout Shift (CLS)](https://web.dev/cls/)
-  ![image-20220718231010570](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906412.png)
+  ![image-20220718231010570](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906412.png!blog.guiyexing)
 
 - [Interaction to Next Paint (INP)](https://web.dev/inp/)
 
@@ -179,7 +179,7 @@ Core Web Vitals是应用于所有Web页面的 Web Vitals的子集，是其最重
 
 最终优化如下
 
-![image-20220515121448313](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906037.png)
+![image-20220515121448313](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906037.png!blog.guiyexing)
 
 ## webpagetest
 
@@ -187,11 +187,11 @@ https://webpagetest.org/测试发布后的网站
 
 测试淘宝网站
 
-![image-20220515122924742](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906048.png)
+![image-20220515122924742](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906048.png!blog.guiyexing)
 
 测试结果
 
-![image-20220515191429218](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906053.png)
+![image-20220515191429218](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906053.png!blog.guiyexing)
 
 ## DevTools网络分析
 
@@ -199,7 +199,7 @@ https://webpagetest.org/测试发布后的网站
 
 通过Chrome任务管理器我们可以查看当前Chrome 浏览器中，所有进程关于GPU、网给和内存空间的使用情况，这些进程包括当前打开的各个页签，安装的各种扩展插件，以及GPU、网络、渲染等浏览器的默认进程，通过监控这些数据，我们可以在有异于其他进程的大幅开销出现时，去定位到可能存在内存泄漏或网络资源加载异常的问题进程。
 
-![image-20220515123539923](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906054.png)
+![image-20220515123539923](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906054.png!blog.guiyexing)
 
 ### Network 网络分析
 
@@ -209,19 +209,19 @@ https://webpagetest.org/测试发布后的网站
 
 左下角还有请求的统计的信息
 
-![image-20220515164727676](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906061.png)
+![image-20220515164727676](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906061.png!blog.guiyexing)
 
 **缓存停用**
 
 停用缓存后刷新当前页面，就不会使用任何缓存，查看是否缓存
 
-![image-20220515165223842](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906064.png)
+![image-20220515165223842](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906064.png!blog.guiyexing)
 
 **网络吞吐**
 
 模拟低速网络与离线状态offline
 
-![image-20220515165531554](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906682.png)
+![image-20220515165531554](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906682.png!blog.guiyexing)
 
 **阻止单个的网络请求**
 
@@ -231,7 +231,7 @@ https://webpagetest.org/测试发布后的网站
 
 这里仅阻止了请求logo的图片请求，页面就不会展示logo
 
-![image-20220515170154355](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906238.png)
+![image-20220515170154355](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906238.png!blog.guiyexing)
 
 ### coverage面板
 
@@ -239,7 +239,7 @@ https://webpagetest.org/测试发布后的网站
 
 打开方式: Ctrl+ Shift + P ->Start instrumenting **coverage** and reload page
 
-![image-20220515185630964](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906249.png)
+![image-20220515185630964](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906249.png!blog.guiyexing)
 
 考虑代码为什么没有执行到，可以做拆包，如路由懒加载
 
@@ -249,7 +249,7 @@ https://webpagetest.org/测试发布后的网站
 
 Memory面板可以快速生成当前的堆内存快照，或者查看内存随时间的变换情况，据此我们可以查看并发现可能出现内存泄漏的环节
 
-![image-20220515191146655](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906253.png)
+![image-20220515191146655](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906253.png!blog.guiyexing)
 
 ## Performance面板
 
@@ -259,11 +259,11 @@ goolechrome提供的测试网页：https://googlechrome.github.io/devtools-sampl
 
 建议在Chrome浏览器的匿名模式下使用该工具，因为在匿名模式下不会受到既有缓存或其他插件程序等因素的影响，能够给性能检测提供一个相对干净的运行环境。
 
-![image-20220515193020823](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906258.png)
+![image-20220515193020823](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906258.png!blog.guiyexing)
 
 页面分析图
 
-![image-20220515193549475](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906260.png)
+![image-20220515193549475](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906260.png!blog.guiyexing)
 
 ## 实时性能分析
 
@@ -273,10 +273,10 @@ goolechrome提供的测试网页：https://googlechrome.github.io/devtools-sampl
 
 在额为增加许多icon后页面会变得非常卡顿，然后使用Optimize优化，在数量不变的情况下帧率会在一定程度上提高，甚至到最佳
 
-![image-20220515194324777](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906372.png)
+![image-20220515194324777](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906372.png!blog.guiyexing)
 
 ### performance monitor
 
 打开方式: Ctrl+ Shift + P ->performance monitor，显示如下图标
 
-![image-20220515195152124](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906374.png)
+![image-20220515195152124](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181906374.png!blog.guiyexing)

@@ -24,7 +24,7 @@ tags: [拼音触发input]
 
 会出现如下效果:
 
-![image-20210908164825912](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181617613.png)
+![image-20210908164825912](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181617613.png!blog.guiyexing)
 
 我们希望得到的效果是汉字输入进去以后再触发事件
 
@@ -66,9 +66,9 @@ input有两个事件：**compositionstart**和**compositionend**
 
 效果图如下：
 
-![image-20210908165616453](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181617620.png)
+![image-20210908165616453](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181617620.png!blog.guiyexing)
 
-![image-20210908165726582](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181617619.png)
+![image-20210908165726582](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181617619.png!blog.guiyexing)
 
 ## react实践
 
