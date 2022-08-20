@@ -254,3 +254,47 @@ https://docusaurus.io/zh-CN/docs/deployment#using-environment-variables
 ### 静态资源存储
 
 参考[PicGo上传文件](/docs/tools/图床)
+
+### mermaidjs画流程图
+
+```js title="src/theme/Mermaid.js"
+import React, { useEffect } from "react";
+import mermaid from "mermaid";
+
+mermaid.initialize({
+    startOnLoad: true
+});
+
+const Mermaid = ({ chart }) => {
+    useEffect(() => {
+        mermaid.contentLoaded();
+    }, []);
+    return <div className="mermaid">{chart}</div>;
+};
+
+export default Mermaid;
+```
+
+画流程图代码
+
+```js
+import Mermaid from '@theme/Mermaid';
+
+<Mermaid chart={`
+    graph LR;
+        A-->B;
+        B-->C;
+        B-->D[plop lanflz eknlzeknfz];
+`}/>
+```
+
+流程效果演示
+
+import Mermaid from '@theme/Mermaid';
+
+<Mermaid chart={`
+    graph LR;
+        A-->B;
+        B-->C;
+        B-->D[plop lanflz eknlzeknfz];
+`}/>
