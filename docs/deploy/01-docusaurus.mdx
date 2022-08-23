@@ -163,6 +163,12 @@ import CodeBlock from '@theme/CodeBlock';
   </TabItem>
 </Tabs>
 
+组合使用，示例代码如下
+
+````markdown
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 <Tabs
   defaultValue="js"
   values={[
@@ -200,6 +206,54 @@ class HelloWorld {
 
 </TabItem>
 </Tabs>
+````
+
+这里注意codeblock里面使用` ``` `的方法可以参考
+
+效果演示
+
+<details>
+<summary>组合示例</summary>
+
+<Tabs
+  defaultValue="js"
+  values={[
+    { label: 'JavaScript', value: 'js', },
+    { label: 'Python', value: 'py', },
+    { label: 'Java', value: 'java', },
+  ]
+}>
+<TabItem value="js">
+
+```js
+function helloWorld() {
+  console.log('Hello, world!');
+}
+```
+
+</TabItem>
+<TabItem value="py">
+
+```py
+def hello_world():
+  print 'Hello, world!'
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+class HelloWorld {
+  public static void main(String args[]) {
+    System.out.println("Hello, World");
+  }
+}
+```
+
+</TabItem>
+</Tabs>
+
+</details>
 
 ### draft
 
