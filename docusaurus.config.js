@@ -20,7 +20,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo/favicon.ico',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -80,10 +80,10 @@ const config = {
     ({
       navbar: {
         title: SITE_TITLE,
-        hideOnScroll: true,
+        // hideOnScroll: true,
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logosc62eccf4c.png',
+          src: 'img/logo/logosc62eccf4c.png',
         },
         items: [
           {
@@ -93,12 +93,12 @@ const config = {
             label: '分类专栏',
           },
           {to: '/blog', label: '博客', position: 'right'},
-          {
-            href: GITHUB_URL,
-            className: 'header-github-link',
-            position: 'right',
-            'aria-label': 'Github repository'
-          },
+          // {
+          //   href: GITHUB_URL,
+          //   className: 'header-github-link',
+          //   position: 'right',
+          //   'aria-label': 'Github repository'
+          // },
           {
             type: 'localeDropdown',
             position: 'right',
