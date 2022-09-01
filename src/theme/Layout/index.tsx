@@ -22,7 +22,8 @@ export default function Layout(props: Props): JSX.Element {
   return (
     <BrowserOnly>
       {() => {
-        const isHomePage: boolean = window.location.pathname === "/";
+        const exclude = ['/','/en/']
+        const isHomePage: boolean = exclude.includes(window.location.pathname);
         return (
           <LayoutProvider>
             <PageMetadata title={title} description={description} />
