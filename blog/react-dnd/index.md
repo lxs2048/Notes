@@ -3,7 +3,6 @@ slug: react-dnd
 title: react-dnd实践
 authors: [dolphin]
 tags: [拖拽, 拖放, react-dnd]
-
 ---
 
 公司使用react-dnd作为项目拖拽库，一时兴起做个简单的拖拽demo
