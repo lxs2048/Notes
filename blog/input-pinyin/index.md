@@ -3,6 +3,7 @@ slug: input-pinyin
 title: input输入中文时，拼音触发input事件
 authors: [dolphin]
 tags: [拼音触发input]
+date: 2022-08-27T18:57
 ---
 
 ## 原生事件

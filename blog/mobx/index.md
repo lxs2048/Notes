@@ -3,6 +3,7 @@ slug: mobx-react
 title: React18结合MobX实践
 authors: [dolphin]
 tags: [React18结合MobX实践,mobx-react]
+date: 2022-09-04T20:49
 ---
 
 ## 官方介绍
@@ -10,6 +11,8 @@ tags: [React18结合MobX实践,mobx-react]
 [mobx中文文档](https://zh.mobx.js.org/README.html)
 
 官方示例理解 MobX
+
+<!--truncate-->
 
 ```javascript
 import React from "react"

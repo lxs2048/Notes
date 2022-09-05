@@ -3,6 +3,7 @@ slug: JavaScript-Event
 title: 事件流传播
 authors: [dolphin]
 tags: [事件冒泡,事件捕获,阻止默认事件,阻止事件传播]
+date: 2022-08-27T14:20
 ---
 
 有如下bug与需求
