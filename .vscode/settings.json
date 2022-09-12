@@ -1,0 +1,30 @@
+{
+    "deploy": {
+        "packages": [{
+            "files": [
+                "**/*",
+            ],
+            "exclude": [
+                "node_modules/**",
+                ".git/**",
+                ".vscode/**",
+                "**/node_modules/**",
+            ],
+            "deployOnSave": false,
+            "button": {
+                "text": "Notes发布",
+                "tooltip": "点击发布到生产环境...",
+                "targets": [ "Notes" ]
+            }
+        }],
+        "targets": [{
+            "type": "sftp",
+            "name": "Notes",
+            "dir": "/home/ubuntu/service/notes",
+            "host": "101.43.181.81",
+            "port": 22,
+            "user": "ubuntu",
+            "privateKey": "D:\\server\\CI"
+        }],
+    },
+}

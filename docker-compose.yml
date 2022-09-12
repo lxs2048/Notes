@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  notes:
+    image: nginx:1.21.6-alpine
+    container_name: notesContainer
+    restart: always
+    ports:
+      - 8001:80
+    volumes:
+      - ./build/:/var/www/html/
+      - ./nginx/conf.d/:/etc/nginx/conf.d
+      - ./nginx/conf/log_format.conf:/etc/nginx/log_format.conf
+      - ./nginx/logs/:/var/log/nginx
+#     networks:
+#       - node-server_backend_net
+# networks:
+#   node-server_backend_net:
+#     external: true # 来自外部
