@@ -2,7 +2,7 @@
 slug: react-axios
 title: 在react中使用axios
 authors: [dolphin]
-tags: [mobx,axios]
+tags: [component_templates,mobx,axios]
 date: 2022-09-17T20:49
 ---
 

@@ -2,7 +2,7 @@
 slug: material
 title: material体验
 authors: [dolphin]
-tags: [material]
+tags: [component_templates,material]
 date: 2022-09-03T16:15
 ---
 

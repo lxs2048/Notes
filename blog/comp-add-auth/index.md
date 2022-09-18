@@ -2,7 +2,7 @@
 slug: comp-add-auth
 title: 加个权限
 authors: [dolphin]
-tags: [鉴权]
+tags: [component_templates,鉴权]
 date: 2022-09-09T11:15
 ---
 

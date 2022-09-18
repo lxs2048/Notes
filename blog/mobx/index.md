@@ -2,7 +2,7 @@
 slug: mobx-react
 title: React18结合MobX实践
 authors: [dolphin]
-tags: [React18结合MobX实践,mobx-react]
+tags: [component_templates,React18结合MobX实践,mobx-react]
 date: 2022-09-04T20:49
 ---
 

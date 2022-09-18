@@ -2,7 +2,7 @@
 slug: MouseEventHandler
 title: 可拉伸侧边栏
 authors: [dolphin]
-tags: [MouseEventHandler,可拉伸侧边栏]
+tags: [component_templates,MouseEventHandler,可拉伸侧边栏]
 date: 2022-09-03T22:18
 ---
 
