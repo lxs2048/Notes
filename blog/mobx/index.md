@@ -72,7 +72,7 @@ setInterval(() => {
 
 创建几个全局store案例
 
-```ts title="src\stores\auth.store.ts"
+```ts title="src/stores/auth.store.ts"
 import { makeAutoObservable } from 'mobx';
 
 export default class AuthStore {
@@ -88,7 +88,7 @@ export default class AuthStore {
 }
 ```
 
-```ts title="src\stores\globalTest.store.ts"
+```ts title="src/stores/globalTest.store.ts"
 import { makeAutoObservable, runInAction } from "mobx";
 
 export default class GlobalTestStore {
@@ -131,7 +131,7 @@ export default class GlobalTestStore {
 }
 ```
 
-```ts title="src\stores\sideMenu.store.ts"
+```ts title="src/stores/sideMenu.store.ts"
 import { makeAutoObservable, runInAction } from 'mobx';
 interface ILoadMenu{
   title:string
@@ -160,7 +160,7 @@ export default class SideMenuStore {
 
 在stores入口统一管理
 
-```ts title="src\stores\store.context.ts"
+```ts title="src/stores/store.context.ts"
 import GlobalTestStore from 'stores/globalTest.store'
 import SideMenuStore from 'stores/sideMenu.store'
 import AuthStore from 'stores/auth.store'
@@ -175,7 +175,7 @@ export const RootStore = {
 
 获取Store的公用Hooks
 
-```tsx title="src\stores\useStore.tsx"
+```tsx title="src/stores/useStore.tsx"
 import { MobXProviderContext } from 'mobx-react';
 import { useContext } from 'react'
 import { RootStore } from 'stores/store.context'
@@ -191,7 +191,7 @@ export default useStore;
 
 项目入口使用Context共享全局的Store对象
 
-```tsx title="src\App.tsx" {5-6,16,18}
+```tsx title="src/App.tsx" {5-6,16,18}
 import IndexRouter from "router/IndexRouter";
 import { createTheme, ThemeProvider } from '@mui/material';
 import {orange} from "@mui/material/colors"
@@ -220,7 +220,7 @@ export default App;
 
 在任意组件中使用
 
-```tsx title="src\pages\Demo2\index.tsx" {2-4,6-7,12-16,22}
+```tsx title="src/pages/Demo2/index.tsx" {2-4,6-7,12-16,22}
 import { useContext } from 'react'
 import { observer } from 'mobx-react'
 import { Button } from '@mui/material'
@@ -249,7 +249,7 @@ export default observer(Demo2)
 
 stores创建StoreCtx用于存储局部store的Context
 
-```ts title="src\stores\store.context.ts" {1-2,6-11}
+```ts title="src/stores/store.context.ts" {1-2,6-11}
 import React from "react";
 import TestStore from 'pages/Demo1/modle/testStore'
 import GlobalTestStore from 'stores/globalTest.store'
@@ -273,7 +273,7 @@ export const RootStore = {
 
 为某个路由的组件通过`Provider`来修改`context`数据注入store
 
-```tsx title="src\router\IndexRouter.tsx" {8-9,21-22}
+```tsx title="src/router/IndexRouter.tsx" {8-9,21-22}
 import { useRoutes, Navigate } from "react-router-dom";
 import type { RouteObject } from "react-router-dom";
 import Layout from "pages/Layout";
@@ -305,7 +305,7 @@ export default function IndexRouter() {
 }
 ```
 
-```ts title="src\pages\Demo1\modle\testStore.ts"
+```ts title="src/pages/Demo1/modle/testStore.ts"
 import { makeAutoObservable } from "mobx";
 
 export default class TestStore {
@@ -323,7 +323,7 @@ export default class TestStore {
 
 使用该store
 
-```tsx title="src\pages\Demo1\index.tsx" {1,3,7,10,13}
+```tsx title="src/pages/Demo1/index.tsx" {1,3,7,10,13}
 import { useContext } from 'react'
 import { observer } from 'mobx-react'
 import { StoreCtx } from 'stores/store.context'
