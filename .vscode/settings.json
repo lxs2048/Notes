@@ -25,6 +25,7 @@
             "port": 22,
             "user": "ubuntu",
             "privateKey": "D:\\server\\CI"
+            // "privateKey": "/Users/dolphin/source/CI"
         }],
     },
 }
