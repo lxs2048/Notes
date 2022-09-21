@@ -14,7 +14,7 @@ date: 2022-09-20T18:57
 
 首先在根目录配置`docker-compose.yml`
 
-```text title="docker-compose.yml"
+```yaml title="docker-compose.yml"
 version: '3.8'
 services:
   backend:
