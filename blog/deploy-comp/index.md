@@ -1,6 +1,6 @@
 ---
 slug: deploy-comp
-title: docker部署component_templates
+title: docker部署comp
 authors: [dolphin]
 tags: [component_templates,docker,deploy]
 date: 2022-09-21T18:57
