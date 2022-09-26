@@ -24,8 +24,8 @@
             "host": "101.43.181.81",
             "port": 22,
             "user": "ubuntu",
-            "privateKey": "D:\\server\\CI"
-            // "privateKey": "/Users/dolphin/source/CI"
+            // "privateKey": "D:\\server\\CI"
+            "privateKey": "/Users/dolphin/source/CI"
         }],
     },
 }
