@@ -45,7 +45,7 @@ const portfolioListData: Array<PortfolioType> = [
   {
     name: "Notes",
     status: "In Development",
-    siteLink: "https://blog.guiyexing.site",
+    siteLink: "https://guiyexing.site",
     repoLink: "https://github.com/hyodage/Notes",
     src: docusaurus,
     stackTags: [
