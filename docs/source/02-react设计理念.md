@@ -8,9 +8,11 @@ sidebar_position: 2
 
 React15慢在哪里，哪些因素导致了react变慢？
 
-React15之前的协调过程是同步的，也叫stack reconciler，因js的执行是单线程的，与GUI绘制互斥，导致在更新比较耗时的任务时，不能及时响应一些高优先级的任务，比如用户的输入，所以页面就会卡顿，这是**cpu的限制**。
+React15之前的协调过程是同步的，也叫stack reconciler，因js的执行是单线程的，与GUI绘制互斥，导致在更新比较耗时的任务时，不能及时响应一些高优先级的任务，比如用户的输入，导致页面卡顿，这是**cpu的限制**。
 
-试想一下，如果我们在日常的开发中，在单线程的环境中，遇到了比较耗时的代码计算会怎么做呢，首先我们可能会将任务分割，让它能够被中断，在其他任务到来的时候让出执行权，当其他任务执行后，再从之前中断的部分开始异步执行剩下的计算。所以关键是实现一套**异步可中断的方案**。
+如果我们在日常的开发中，在单线程的环境里遇到了比较耗时的代码计算会怎么做呢？
+
+首先我们可能会将任务分割，让它能够被中断，在其他任务到来的时候让出执行权，当其他任务执行后，再从之前中断的部分开始异步执行剩下的计算。所以关键是实现一套**异步可中断的方案**。
 
 该方案中提到任务分割，异步执行，并且能让出执行权，由此可以带出react中的三个概念
 
@@ -18,22 +20,26 @@ React15之前的协调过程是同步的，也叫stack reconciler，因js的执�
 
 react15的更新是同步的，因为它不能将任务分割，所以需要一套数据结构让它既能对应真实的dom又能作为分隔的单元，这就是Fiber。
 
+Fiber可以对应真实节点，也可以对应类或函数组件，最后的更新是要应用到真实节点上的，所以Fiber能作为动态的工作单元
+
+使用伪代码来实现该过程：
+
 ```js
 let firstFiber
 let nextFiber = firstFiber
 let shouldYield = false
 //firstFiber->firstChild->sibling
-function performUnitOfWork(nextFiber){
-  //...
-  return nextFiber.next
+function performUnitOfWork(nextFiber) {
+    //...
+    return nextFiber.next
 }
 
-function workLoop(deadline){
-  while(nextFiber && !shouldYield){
-          nextFiber = performUnitOfWork(nextFiber)
-          shouldYield = deadline.timeReaming < 1
-        }
-  requestIdleCallback(workLoop)
+function workLoop(deadline) {
+    while (nextFiber && !shouldYield) {
+        nextFiber = performUnitOfWork(nextFiber); // 执行完当前节点得到下一个节点
+        shouldYield = deadline.timeReaming < 1; // 没有空余时间
+    }
+    requestIdleCallback(workLoop)
 }
 
 requestIdleCallback(workLoop)
@@ -41,7 +47,7 @@ requestIdleCallback(workLoop)
 
 **Scheduler：**
 
-有了Fiber，我们就需要用浏览器的时间片异步执行这些Fiber的工作单元，浏览器有一个api叫做requestIdleCallback，它可以在浏览器空闲的时候执行一些任务，我们用这个api执行react的更新，让高优先级的任务优先响应，但是requestIdleCallback存在着浏览器的兼容性和触发不稳定的问题，所以我们需要用js实现一套**时间片运行机制**，在react中这部分叫做scheduler。
+有了Fiber，我们就需要用浏览器的时间片异步执行这些Fiber的工作单元，浏览器有一个api叫做requestIdleCallback，它可以在浏览器空闲的时候执行一些任务，我们用这个api执行react的更新，让高优先级的任务优先响应，但是requestIdleCallback存在着浏览器的兼容性和触发不稳定的问题，所以需要用实现一套自己的**时间片运行机制**，在react中这部分叫做scheduler。
 
 **Lane：**
 
@@ -51,7 +57,7 @@ requestIdleCallback(workLoop)
 
 由于有了这一套异步可中断的机制，我们就能实现batchedUpdates批量更新和Suspense
 
-下图就是使用异步可中断前后的更新过程对比
+下图就是使用异步可中断前后的更新过程对比：
 
 ![20220830223636](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208302306235.png!blog.guiyexing)
 
@@ -67,20 +73,20 @@ requestIdleCallback(workLoop)
 
 ```js
 function getPrice(id) {
-  return fetch(`xxx.com?id=${productId}`).then((res)=>{
-    return res.price
-  })
+    return fetch(`xxx.com?id=${productId}`).then((res) => {
+        return res.price
+    })
 }
 
 async function getTotalPirce(id1, id2) {
-  const p1 = await getPrice(id1);
-  const p2 = await getPrice(id2);
+    const p1 = await getPrice(id1);
+    const p2 = await getPrice(id2);
 
-  return p1 + p2;
+    return p1 + p2;
 }
 
-async function run(){
-	await getTotalPrice('001', '002');
+async function run() {
+    await getTotalPrice('001', '002');
 }
 ```
 
@@ -90,23 +96,24 @@ async function run(){
 
 ```js
 function getPrice(id) {
-  const price = perform id;
-  return price;
+    const price = perform id;
+    return price;
 }
 
 function getTotalPirce(id1, id2) {
-  const p1 = getPrice(id1);
-  const p2 = getPrice(id2);
+    const p1 = getPrice(id1);
+    const p2 = getPrice(id2);
 
-  return p1 + p2;
+    return p1 + p2;
 }
 
 try {
-  getTotalPrice('001', '002');
-} handle (productId) {
-  fetch(`xxx.com?id=${productId}`).then((res)=>{
-    resume with res.price
-  })
+    getTotalPrice('001', '002');
+}
+handle(productId) {
+    fetch(`xxx.com?id=${productId}`).then((res) => {
+        resume with res.price
+    })
 }
 ```
 
@@ -114,18 +121,23 @@ try {
 
 ```js
 function usePrice(id) {
-  useEffect((id)=>{
-      fetch(`xxx.com?id=${productId}`).then((res)=>{
-        return res.price
-  	})
-  }, [])
+    useEffect((id) => {
+        fetch(`xxx.com?id=${productId}`).then((res) => {
+            return res.price
+        })
+    }, [])
 }
 
-function TotalPirce({id1, id2}) {
-  const p1 = usePrice(id1);
-  const p2 = usePrice(id2);
+function TotalPirce({
+    id1,
+    id2
+}) {
+    const p1 = usePrice(id1);
+    const p2 = usePrice(id2);
 
-  return <ShowTotal props={...}>
+    return <ShowTotal props = {
+        ...
+    } >
 }
 ```
 
@@ -133,20 +145,20 @@ function TotalPirce({id1, id2}) {
 
 ```js
 function getPrice(id) {
-  return fetch(`xxx.com?id=${productId}`).then((res)=>{
-    return res.price
-  })
+    return fetch(`xxx.com?id=${productId}`).then((res) => {
+        return res.price
+    })
 }
 
 function* getTotalPirce(id1, id2) {
-  const p1 = yield getPrice(id1);
-  const p2 = yield getPrice(id2);
+    const p1 = yield getPrice(id1);
+    const p2 = yield getPrice(id2);
 
-  return p1 + p2;
+    return p1 + p2;
 }
 
-function* run(){
-	yield getTotalPrice('001', '002');
+function* run() {
+    yield getTotalPrice('001', '002');
 }
 ```
 
@@ -163,7 +175,7 @@ function* fetchUser(action) {
 }
 ```
 
-严格意义上讲react是不支持Algebraic Effects的，但是react有Fiber，执行完这个Fiber的更新之后交还执行权给浏览器，让浏览器决定后面怎么调度，由此可见Fiber得是一个链表结构才能达到这样的效果
+严格意义上讲react是不支持Algebraic Effects的，但是react有Fiber，可以把状态或者是更新，还有一些副作用都存入Fiber，更新的时候只需要更新Fiber上的副作用就可以了，执行完这个Fiber的更新之后交还执行权给浏览器，让浏览器决定后面怎么调度，由此可见Fiber得是一个链表结构才能达到这样的效果
 
 Suspense也是这种概念的延伸，先看个例子
 
@@ -172,7 +184,7 @@ const ProductResource = createResource(fetchProduct);
 
 const Proeuct = (props) => {
     // 用同步的方式来编写异步代码!
-  const p = ProductResource.read( props.id);
+  const p = ProductResource.read(props.id);
   return <h3>{p.price}</h3>;
 }
 
