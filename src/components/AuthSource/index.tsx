@@ -1,18 +1,25 @@
 import React,{ useState,useRef } from 'react'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './styles.module.scss';
-function AuthSource({children}) {
+import Notification from "@site/src/components/Notification";
+function AuthSource({children}:{children:React.ReactNode}) {
   const {
     siteConfig: {customFields},
   } = useDocusaurusContext();
   const [hide,setHide] = useState(true)
+  const [showErrMsg, setShowErrMsg] = useState<boolean>(false);
+  const errInfo = "code错误"
   const InputRef = useRef(null)
   const checkVal = ()=>{
     let val = InputRef.current.value
-    if(val === customFields.authSourceCode){
+    if(val === customFields?.authSourceCode){
       setHide(false)
     }else{
       setHide(true)
+      setShowErrMsg(true);
+      setTimeout(() => {
+        setShowErrMsg(false);
+      }, 2000);
     }
   }
 
@@ -24,6 +31,7 @@ function AuthSource({children}) {
       {
         !hide && <div className={styles['custom-answer-content']}>{children}</div>
       }
+      <Notification show={showErrMsg} errorIcon={true} title={errInfo} changeShow={setShowErrMsg} />
     </div>
   )
 }

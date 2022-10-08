@@ -67,7 +67,7 @@ function HomepageHeader({ isMobileDevice }: HomepageHeaderProps): JSX.Element {
     !show &&
       setTimeout(() => {
         setShow(false);
-      }, 4000);
+      }, 2000);
   }
   return (
     <header className={clsx(styles.heroBanner)}>

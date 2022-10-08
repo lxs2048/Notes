@@ -59,6 +59,92 @@ git clone https://gitee.com/mirrors/oh-my-zsh ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 ```
 
+## mac安装nvm
+
+**下载[nvm](https://github.com/nvm-sh/nvm)**
+
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+```
+
+zsh类型的shell需要将以上命令中的bash改为zsh
+
+执行命令`Failed to connect to raw.githubusercontent.com port 443 after 5 ms: Connection refused`
+
+GitHub的*raw.githubusercontent.com*域名解析被污染,
+
+查询真实IP
+
+在https://www.ipaddress.com/查询raw.githubusercontent.com的真实IP。
+
+通过修改`hosts`解决此问题`sudo vim /etc/hosts`
+
+```
+199.232.28.133 raw.githubusercontent.com
+```
+
+**打开终端，进入用户的home目录中**
+
+```js
+cd ~/
+```
+
+**检查配置文件**
+
+使用 `ls -a` 显示这个目录下的所有文件（夹）（包含隐藏文件及文件夹），查看有没有 `.zshrc` 这个文件
+
+**新建.zshrc文件**
+
+如果没有，则新建一个
+
+```js
+touch ~/.zshrc
+```
+
+**配置.zshrc文件**
+
+将 nvm 环境变量添加到 shell 中, 这里我系统默认的是的zsh而不是bash，需要配置一下，打开.zshrc文件，添加如下配置
+
+```js
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+```
+
+**加载配置文件**
+
+```js
+source ~/.zshrc
+```
+
+**使用方式**
+
+```
+nvm -v
+nvm list
+nvm install 14.19.1
+nvm install 16.15.1
+nvm use 14.19.1
+```
+
+**查看node版本**
+
+```
+node -v
+```
+
+查看版本时`Bad CPU type in executable`
+
+安装Rosetta 2：`softwareupdate --install-rosetta`
+
+**node的安装位置**
+
+在终端我们可以使用 `which node` 来查看我们的 `node` 被安装到了哪里，这里终端打印出来的地址其实是你当前使用的 `node` 版本快捷方式的地址
+
+```js
+/Users/用户名/.nvm/versions/node/v14.19.1/bin/node
+```
+
 ## 安装docker
 
 安装docker： `https://docs.docker.com/desktop/mac/apple-silicon/`
