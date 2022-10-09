@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Fiber
@@ -16,6 +16,12 @@ react15在render阶段的reconcile是不可打断的，在进行大量节点的r
 * **保存状态：**因为Fiber能保存状态和更新的信息，所以就能实现函数组件的状态更新，也就是hooks
 
 ## Fiber的数据结构
+
+Fiber对象上面保存了包括这个节点的`属性、类型、dom`等
+
+Fiber对象通过`child、sibling、return（指向父节点）`这三个指针来形成Fiber树
+
+Fiber对象作为动态工作单元还保存了更新状态时用于计算state的`updateQueue`，updateQueue是一种`链表`结构，上面可能存在多个未计算的update，update也是一种数据结构，上面包含了更新的数据、优先级等，除了这些之外，上面还有和副作用有关的信息。
 
 Fiber的自带的属性如下：
 
@@ -68,7 +74,9 @@ function FiberNode(
 
 ## Fiber双缓存
 
-Fiber可以保存真实的dom，真实dom对应在内存中的Fiber节点会形成Fiber树，这颗Fiber树在react中叫current Fiber，也就是当前dom树对应的Fiber树，而正在构建Fiber树叫workInProgress Fiber，这两颗树的节点通过alternate相连.
+`Fiber双缓存`是指存在两颗Fiber树，current Fiber树描述了当前呈现的dom树，workInProgress Fiber是正在更新的Fiber树，这两颗Fiber树都是在内存中运行的，通过alternate相连，在workInProgress Fiber构建完成之后会将它作为current Fiber应用到dom上
+
+在mount时（首次渲染），会根据jsx对象（Class Component或的render函数者Function Component的返回值），构建Fiber对象，形成Fiber树，然后这颗Fiber树会作为current Fiber应用到真实dom上，在update（状态更新时如setState）的时候，会根据状态变更后的jsx对象和current Fiber做对比形成新的workInProgress Fiber，然后workInProgress Fiber切换成current Fiber应用到真实dom就达到了更新的目的，而这一切都是在内存中发生的，从而减少了对dom好性能的操作。
 
 ```js
 function App() {
