@@ -39,7 +39,7 @@ function workLoopConcurrent() {
 }
 ```
 
-在Scheduler中的每个任务的优先级使用`过期时间`来表示，如果一个任务的过期时间离现在很近，说明它马上就要过期了，优先级很高，如果过期时间很长，那它的优先级就低，没有过期的任务存放在timerQueue中，过期的任务存放在taskQueue中，timerQueue和timerQueue都是**小顶堆**，所以peek取出来的都是离现在时间最近也就是优先级最高的那个任务，然后优先执行它。
+在Scheduler中的每个任务的优先级使用`过期时间`来表示，如果一个任务的过期时间离现在很近，说明它马上就要过期了，优先级很高，如果过期时间很长，那它的优先级就低，没有过期的任务存放在timerQueue中，过期的任务存放在taskQueue中，timerQueue和taskQueue都是**小顶堆**，所以peek取出来的都是离现在时间最近也就是优先级最高的那个任务，然后优先执行它。
 
 ![expirationTime](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210091213879.png!blog.guiyexing)
 
@@ -80,7 +80,7 @@ export const OffscreenLane: Lane = 0b1000000000000000000000000000000;
 
 Reconciler发生在render阶段，render阶段会分别为节点执行beginWork和completeWork，或者计算state，对比节点的差异，为节点赋值相应的effectFlags（对应dom节点的增删改）
 
-协调器是在render阶段工作的，简单一句话概括就是Reconciler会创建或者更新Fiber节点。在mount的时候会根据jsx生成Fiber对象，在update的时候会根据最新的state形成的jsx对象和current Fiber树对比构建workInProgress Fiber树，这个对比的过程就是**diff算法**。
+**Reconciler会创建或者更新Fiber节点**。在mount的时候会根据jsx生成Fiber对象，在update的时候会根据最新的state形成的jsx对象和current Fiber树对比构建workInProgress Fiber树，这个对比的过程就是**diff算法**。
 
 diff算法发生在render阶段的reconcileChildFibers函数中，diff算法分为`单节点的diff`和`多节点的diff`（例如一个节点中包含多个子节点就属于多节点的diff），单节点会根据节点的key和type，props等来判断节点是复用还是直接新创建节点，多节点diff会涉及节点的增删和节点位置的变化。
 
@@ -94,7 +94,7 @@ export const PlacementAndUpdate = 0b0000000000110;
 export const Deletion = 0b0000000001000;
 ```
 
-render阶段遍历Fiber树类似DFS的过程，`捕获`阶段发生在begi nWork函数中，该函数做的主要工作是创建Fiber节点，计算state和diff算法，`冒泡`阶段发生在completeWork中，该函数主要是做一些收尾工作，例如处理节点的props、和形成一条effectList的链表，该链表是被标记了更新的节点形成的链表
+render阶段遍历Fiber树类似DFS的过程，`捕获`阶段发生在beginWork函数中，该函数做的主要工作是创建Fiber节点，计算state和diff算法，`冒泡`阶段发生在completeWork中，该函数主要是做一些收尾工作，例如处理节点的props、和形成一条effectList的链表，该链表是被标记了更新的节点形成的链表
 
 深度优先遍历过程如下，图中的数字是顺序，return指向父节点
 
@@ -131,11 +131,11 @@ function App() {
 }
 ```
 
-点击h1后p标签要被标识带有副作用，同时h1也会被标识，因为click函数是一个匿名函数，每次render时这个匿名函数的地址都是不一样的，所以h1也会被标识上副作用，最后形成effectList如下，从rootFiber->h1->p
+点击h1后p标签要被标识带有副作用，同时h1也会被标识，因为click函数是一个匿名函数，每次render时这个匿名函数的地址都是不一样的，所以h1也会被标识上副作用，最后形成effectList如下，从rootFiber->p->h1
 
 ![click h1 effectList](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210091249239.png!blog.guiyexing)
 
-注意：fiberRoot是整个项目的根节点，只存在一个，rootFiber是应用的根节点，可能存在多个，例如多个`ReactDOM.render(<App />, document.getElementById("root"));`可以创建多个应用节点
+注意：fiberRootNode是整个项目的根节点，只存在一个，rootFiber是应用的根节点，可能存在多个，例如多个`ReactDOM.render(<App />, document.getElementById("root"));`可以创建多个应用节点
 
 ## renderer(commit phase)
 
@@ -153,7 +153,7 @@ commit阶段发生在commitRoot函数中，该函数主要遍历effectList，分
 
 ![js16.6ms](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210091308892.png!blog.guiyexing)
 
-对比下开启和未开启concurrent mode的区别，开启之后，构建Fiber的任务的执行不会一直处于阻塞状态，而是分成了一个个的task
+concurrent mode开启之后，构建Fiber的任务的执行不会一直处于阻塞状态，而是分成了一个个的task
 
 ![concurrent模式](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210091923322.png!blog.guiyexing)
 

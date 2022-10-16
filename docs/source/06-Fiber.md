@@ -17,11 +17,11 @@ react15在render阶段的reconcile是不可打断的，在进行大量节点的r
 
 ## Fiber的数据结构
 
-Fiber对象上面保存了包括这个节点的`属性、类型、dom`等
+Fiber对象上面保存了包括这个节点的 `属性、类型、dom` 等
 
-Fiber对象通过`child、sibling、return（指向父节点）`这三个指针来形成Fiber树
+Fiber对象通过 `child、sibling、return（指向父节点）` 这三个指针来形成Fiber树
 
-Fiber对象作为动态工作单元还保存了更新状态时用于计算state的`updateQueue`，updateQueue是一种`链表`结构，上面可能存在多个未计算的update，update也是一种数据结构，上面包含了更新的数据、优先级等，除了这些之外，上面还有和副作用有关的信息。
+Fiber对象作为动态工作单元还保存了更新状态时用于计算state的 `updateQueue` ，updateQueue是一种 `链表` 结构，上面可能存在多个未计算的update，update也是一种数据结构，上面包含了更新的数据、优先级等，除了这些之外，上面还有和副作用有关的信息。
 
 Fiber的自带的属性如下：
 
@@ -74,20 +74,17 @@ function FiberNode(
 
 ## Fiber双缓存
 
-`Fiber双缓存`是指存在两颗Fiber树，current Fiber树描述了当前呈现的dom树，workInProgress Fiber是正在更新的Fiber树，这两颗Fiber树都是在内存中运行的，通过alternate相连，在workInProgress Fiber构建完成之后会将它作为current Fiber应用到dom上
+`Fiber双缓存` 是指存在两颗Fiber树，current Fiber树描述了当前呈现的dom树，workInProgress Fiber是正在更新的Fiber树，这两颗Fiber树都是在内存中运行的，通过alternate相连，在workInProgress Fiber构建完成之后会将它作为current Fiber应用到dom上
 
-在mount时（首次渲染），会根据jsx对象（Class Component或的render函数者Function Component的返回值），构建Fiber对象，形成Fiber树，然后这颗Fiber树会作为current Fiber应用到真实dom上，在update（状态更新时如setState）的时候，会根据状态变更后的jsx对象和current Fiber做对比形成新的workInProgress Fiber，然后workInProgress Fiber切换成current Fiber应用到真实dom就达到了更新的目的，而这一切都是在内存中发生的，从而减少了对dom好性能的操作。
+在mount时（首次渲染），会根据jsx对象（Class Component或的render函数者Function Component的返回值），构建Fiber对象形成Fiber树，然后这颗Fiber树会作为current Fiber应用到真实dom上，在update（状态更新时如setState）的时候，会根据状态变更后的jsx对象和current Fiber做对比形成新的workInProgress Fiber，然后workInProgress Fiber切换成current Fiber应用到真实dom就达到了更新的目的，而这一切都是在内存中发生的，从而减少了对dom耗性能的操作。
 
-```js
+```jsx
 function App() {
-    return ( <
-        >
-        <
-        h1 >
-        <
-        p > count < /p> hello < /
-        h1 > <
-        />
+    return ( <>
+        <h1 >
+        <p > count </p> hello
+        </h1 >
+      </>
     )
 }
 
@@ -96,7 +93,7 @@ ReactDOM.render( < App / > , document.getElementById("root"));
 
 ![workInProgress to current](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202209281213189.png!blog.guiyexing)
 
-构建workInProgress Fiber发生在createWorkInProgress中，它能创建或者服用Fiber
+构建workInProgress Fiber发生在createWorkInProgress中，它能创建或者复用Fiber
 
 ```js
 //ReactFiber.old.js
@@ -151,11 +148,11 @@ export function createWorkInProgress(current: Fiber, pendingProps: any): Fiber {
 }
 ```
 
-* 在mount时：会创建fiberRoot和rootFiber，然后根据jsx对象创建Fiber节点，节点连接成current Fiber树。
+* 在mount时：会创建fiberRootNode和rootFiber，然后根据jsx对象创建Fiber节点，节点连接成current Fiber树。
 
 ![FiberRootNode](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202209272021620.png!blog.guiyexing)
 
-* 在update时：会根据新的状态形成的jsx（ClassComponent的render或者FuncComponent的返回值）和current Fiber对比形（diff算法）成一颗叫workInProgress的Fiber树，然后将fiberRoot的current指向workInProgress树，此时workInProgress就变成了current Fiber。fiberRoot：指整个应用的根节点，只存在一个
+* 在update时：会根据新的状态形成的jsx（ClassComponent的render或者FuncComponent的返回值）和current Fiber对比（diff算法）形成一颗叫workInProgress的Fiber树，然后将fiberRootNode的current指向workInProgress树，此时workInProgress就变成了current Fiber。
 
   > fiberRoot：指整个应用的根节点，只存在一个
   >
@@ -167,24 +164,24 @@ export function createWorkInProgress(current: Fiber, pendingProps: any): Fiber {
 
 * **mount时：**
 
-  1. 刚开始只创建了FiberRootNode和rootFiber两个节点
+1. 刚开始只创建了FiberRootNode和rootFiber两个节点
 
 ![fiberRootNode&rootFiber](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202209281057735.png!blog.guiyexing)
 
-  2. 然后根据jsx创建workInProgress Fiber
+2. 然后根据jsx创建workInProgress Fiber
 
 ![create workInProgress Fiber](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202209281112361.png!blog.guiyexing)
 
-  3. 把workInProgress Fiber切换成current Fiber
+3. 把workInProgress Fiber切换成current Fiber
 
 ![to current Fiber](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202209281138505.png!blog.guiyexing)
 
 * **update时**
 
-  1. 根据current Fiber创建workInProgress Fiber
+1. 根据current Fiber创建workInProgress Fiber
 
 ![current create workInProgress](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202209281158216.png!blog.guiyexing)
 
-  2. 把workInProgress Fiber切换成current Fiber
+2. 把workInProgress Fiber切换成current Fiber
 
 ![workInProgress to current](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202209281205345.png!blog.guiyexing)
