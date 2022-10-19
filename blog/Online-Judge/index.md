@@ -12,6 +12,8 @@ date: 2022-10-18T20:49
 
 [OJ在线编程常见输入输出练习场](https://ac.nowcoder.com/acm/contest/5657)
 
+<!--truncate-->
+
 ## v8输入输出
 
 第四题为例[A+B(4)](https://ac.nowcoder.com/acm/contest/5657/D)
@@ -178,6 +180,76 @@ function fun() {
 
 - [字符串排序(1)](https://ac.nowcoder.com/acm/contest/5657/H)
 
+  ```js
+  const readline = require('readline')
+  const rl = readline.createInterface({
+    input:process.stdin,
+    output:process.stdout
+  })
+  let num = 0
+  rl.on('line',(line)=>{
+    if(num === 0){
+      num = line
+    }else{
+      const lines = line.split(' ')
+      const ret = lines.sort((a,b)=>{
+        return a.localeCompare(b)
+      })
+      console.log(ret.join(' '))
+    }
+  })
+  ```
+
 - [字符串排序(2)](https://ac.nowcoder.com/acm/contest/5657/I)
 
+  ```js
+  const readline = require('readline')
+  const rl = readline.createInterface({
+    input:process.stdin,
+    output:process.stdout
+  })
+  rl.on('line',(line)=>{
+    const lines = line.split(' ')
+    const ret = lines.sort((a,b)=>{
+      return a.localeCompare(b)
+    })
+    console.log(ret.join(' '))
+  })
+  ```
+
 - [字符串排序(3)](https://ac.nowcoder.com/acm/contest/5657/J)
+
+  ```js
+  const readline = require('readline')
+  const rl = readline.createInterface({
+    input:process.stdin,
+    output:process.stdout
+  })
+  rl.on('line',(line)=>{
+    const lines = line.split(',')
+    const ret = lines.sort((a,b)=>{
+      return a.localeCompare(b)
+    })
+    console.log(ret.join(','))
+  })
+  ```
+
+- [自测本地通过提交为0](https://ac.nowcoder.com/acm/contest/5657/K)
+
+  ```js
+  const readline = require('readline')
+  const rl = readline.createInterface({
+    input:process.stdin,
+    output:process.stdout
+  })
+  rl.on('line',(line)=>{
+    const [a,b] = line.split(' ').map(Number)
+    console.log(a+b)
+  })
+  ```
+
+![image-20221019122257048](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210191223967.png!blog.guiyexing)
+
+## 新手上路
+
+[【新手上路】语法入门&算法入门题单](https://ac.nowcoder.com/discuss/817596?f=b)
