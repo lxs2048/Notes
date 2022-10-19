@@ -253,3 +253,92 @@ function fun() {
 ## 新手上路
 
 [【新手上路】语法入门&算法入门题单](https://ac.nowcoder.com/discuss/817596?f=b)
+
+### 顺序结构程序设计
+
+**取整运算**
+
+```js
+let num = 7873244 / 773
+console.log(num);//10185.309184993532
+// 直接取整（丢弃小数部分）
+console.log(Number.parseInt(num))// 10185
+// 四舍五入取整
+console.log(Math.round(num))// 10185
+// 向上取整
+console.log(Math.ceil(num))// 10186
+// 向下取整
+console.log(Math.floor(num))// 10185
+```
+
+**字符串转整型与浮点型**
+
+```js
+console.log(Number.parseInt('1.359578'));//字符串转整型：1
+console.log(Number.parseFloat('1.359578'));//字符串转浮点型：1.359578
+```
+
+**保留指定位数小数**
+
+“银行家舍入”是IEEE754标准的推荐舍入标准,toFixed就是使用该标准：“四舍六入五成双”
+
+注意：toFixed(num)返回值为string
+
+```js
+console.log((3.1/2).toFixed(1)) //1.55=>1.6
+console.log((2.9/2).toFixed(1)) //1.45=>1.4
+```
+
+**取余和取模**
+
+取余是数学中的概念，取模是计算机中的概念，两者都是求两数相除的余数
+
+1. 在 JavaScript 中，模运算（没有专用的运算符）可以使用 ((n % d) + d) % d。
+2. 对于同号的两个操作数，两者是等价的，但在操作数具有不同的符号时，取模运算的结果总是与除数同号，而取余运算则是余数与被除数同号
+
+```js
+console.log(7%3);//1
+console.log(7%-3);//1
+console.log(-7%3);//-1
+console.log(-7%-3);//-1
+function mod(n, m) {  return ((n % m) + m) % m; }
+console.log(mod(7,3));//1
+console.log(mod(7,-3));//-2
+console.log(mod(-7,3));//2
+console.log(mod(-7,-3));//-1
+```
+
+* (-7) % 3取余运算(-2.333)，向0方向舍入，取 -2。因此 (-7) % 3 商 -2 余数为 -1
+* (-7) Mod 3取模运算(-2.333)，向无穷小方向舍入，取 -3。因此 (-7) Mod 4 商 -3 余数为 2
+
+举个🌰：
+
+输入一个n，输出其个位数：`print(n%10)`
+
+**js字符与ASCII码互转的方法**
+
+```js
+('A').charCodeAt();  // 65
+String.fromCharCode(65);  // 'A'
+```
+
+**进制转换**
+
+一、Number.parseInt(string , radix)
+
+字符串(只能由字母和数字组成)由低进制转高进制，如二进制转八进制，但是八进制不能转二进制，radix表示进制，取值2~36。
+
+```js
+Number.parseInt('010',8)//8
+Number.parseInt('20',2)//NaN，大转小NaN
+```
+
+二、Number.toString(radix)
+
+这个函数只能将十进制数字转换为任意进制的字符串形式，同样，radix表示进制，取值2~36。
+
+```js
+(10).toString(2)//"1010"转2进制
+(10).toString(16)//"a" 转16进制
+(1000).toString(36)//"rs" 转36进制
+```

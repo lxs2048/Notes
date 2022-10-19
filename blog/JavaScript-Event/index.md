@@ -297,3 +297,27 @@ const addItemComponent = (e,item) => {
   // ...
 }
 ```
+
+## return false阻止？
+
+网络上流传`return false;`会同时阻止事件冒泡也会阻止默认事件很多没有说明前提
+
+ **jQuery 的 return false 能够阻止事件冒泡。**
+
+**但是原生 JavaScript 的 return false 并不具备此能力。**
+
+```js
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<script>
+    window.onload = function () {
+        $(".inner").click(function (e) {
+            // e.stopPropagation()
+            console.log('in')
+            return false
+        })
+        $(".top").click(function () {
+            console.log('top')
+        })
+    }
+</script>
+```
