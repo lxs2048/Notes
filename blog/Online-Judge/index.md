@@ -342,3 +342,33 @@ Number.parseInt('20',2)//NaN，大转小NaN
 (10).toString(16)//"a" 转16进制
 (1000).toString(36)//"rs" 转36进制
 ```
+
+**数学计算**
+
+`sqrt()`方法可返回一个数的平方根，如果参数小于0，则返回NaN。
+
+```js
+console.log(Math.sqrt(4));// 2
+```
+
+`pow(x,y)`可返回x的y次幂,当参数为分数（大于0，小于1），即pow(x,1/y)可以开x的y次方根
+
+```js
+console.log(Math.pow(2,3));// 8
+console.log(Math.pow(8,1/3));// 2
+```
+
+举个🌰：
+
+知道三角形的3边求面积
+
+```js
+while(line = readline()){
+    const [a,b,c] = line.split(' ').map(Number)
+    const circ = a+b+c
+    const p = circ/2
+    const area = Math.sqrt(p*(p-a)*(p-b)*(p-c))
+    const ret = `circumference=${circ.toFixed(2)} area=${area.toFixed(2)}`
+    print(ret)
+}
+```
