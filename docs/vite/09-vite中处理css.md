@@ -1,0 +1,109 @@
+# 在vite中处理css
+
+## 处理css
+
+vite天生就支持对css文件的直接处理，在`test-vite`中测试
+
+```js title="main.js"
+import './index.css'
+```
+
+```css title="index.css"
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: bisque;
+}
+```
+
+1. vite在读取到main.js中引用到了index.css
+2. 直接去使用fs模块去读取index.css中文件内容
+3. 直接创建一个style标签, 将index.css中文件内容直接copy进style标签里
+4. 将style标签插入到index.html的head中
+5. 将该css文件中的内容直接替换为js脚本(方便热更新或者css模块化), 同时设置Content-Type为js 从而让浏览器以JS脚本的形式来执行该css后缀的文件
+
+![image-20221023193552363](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210231935392.png!blog.guiyexing)
+
+场景:
+
+- 一个组件最外层的元素类名一般取名：wrapper
+- 一个组件最底层的元素类名一般取名：footer
+
+你取了footer这个名字, 别人因为没有看过你这个组件的源代码, 也可能去取名footer这个类名，最终可能会导致样式被覆盖（因为类名重复）, 这就是我们在协同开发的时候很容易出现的问题
+
+`css module`就是来解决这个问题的，基于node，大致原理如下: 
+
+1. module.css (module是一种约定, 表示需要开启css模块化)
+2. 他会将你的所有类名进行一定规则的替换（将footer 替换成 _footer_1o5kg_1）
+3. 同时创建一个映射对象{ footer: "_footer_1o5kg_1" }
+4. 将替换过后的内容塞进style标签里然后放入到head标签中 (能够读到index.html的文件内容)
+5. 将a.module.css内容进行全部抹除, 替换成JS脚本
+5. 将创建的映射对象在脚本中进行默认导出
+
+less(预处理器): less给我们提供了一些方便且非常实用的方法
+
+## css module测试
+
+创建两个组件，并且分别引入各自的样式
+
+```js title="CmpA.js"
+console.log('CmpA')
+import './a.css'
+const compA = document.createElement('div')
+document.body.append(compA)
+compA.className = "footer"
+```
+
+```css title="a.css"
+.footer{
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    background-color: blue;
+}
+```
+
+```js title="CmpB.js"
+console.log('CmpB')
+import "./b.css"
+const compB = document.createElement('div')
+document.body.append(compB)
+compB.className = "footer"
+```
+
+```css title="b.css"
+.footer{
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    background-color: green;
+}
+```
+
+在main.js中引入这两个组件就可以挂载到页面
+
+```js
+import './CmpA.js'
+import './CmpB.js'
+```
+
+这个时候我们就会发现样式被覆盖了
+
+![image-20221023200039554](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210232000601.png!blog.guiyexing)
+
+这个时候我们来看看使用module的效果
+
+首先把`a.css`与`b.css`改为`a.module.css`于`b.module.css`，分别导入打印结果
+
+```js
+import styleA from './a.module.css'
+console.log(styleA)
+```
+
+![image-20221023201106429](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210232011470.png!blog.guiyexing)
+
+更改样式：`compA.className = styleA.footer`，组件B同理。
+
+![image-20221023201517515](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210232015548.png!blog.guiyexing)
+
+这样就实现了样式的模块化
