@@ -123,3 +123,30 @@ svgElement.onmouseenter = function() {
 这里同时设置了在鼠标件在鼠标指针移动到元素上时触发改变颜色
 
 ![image-20221025210611001](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210252106041.png!blog.guiyexing)
+
+## vite在生产环境对静态资源的处理
+
+打包后的静态资源为什么要有hash？
+
+浏览器是有一个缓存机制，静态资源名字没有变化，在发送请求的时候就会直接读取缓存
+
+hash算法：将一串字符串经过运算得到一个新的乱码字符串，字符串不变得到的新的值也不变。
+
+利用好hash算法可以让我们更好的去控制浏览器的缓存机制
+
+配置vite使用rollup的构建策略
+
+```js
+build: { // 构建生产包时的一些配置策略
+  rollupOptions: { // 配置rollup的一些构建策略
+      output: { // 控制输出
+          // 在rollup里面, hash代表将你的文件名和文件内容进行组合计算得来的结果
+          assetFileNames: "[hash].[name].[ext]"
+      }
+  },
+  assetsInlineLimit: 4096, // 默认4kb，如果小于4kb的话就把图片编译成base64
+  outDir: "build", // 配置输出目录
+  assetsDir: "static", // 配置输出目录中的静态资源目录
+  emptyOutDir: true, // 清除输出目录中的所有文件
+}
+```
