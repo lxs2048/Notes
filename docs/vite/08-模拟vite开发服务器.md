@@ -36,8 +36,8 @@ yarn add koa
 首先创建服务的入口文件
 
 ```js title="index.js"
-const Koa = require("koa"); // 不能用esmodule 必须使用commonjs
-const fs = require("fs");  // ./ / npm install yarn add 
+const Koa = require("koa");
+const fs = require("fs");
 const path = require("path");
 
 const app = new Koa();
