@@ -13,7 +13,7 @@
 
 举两个🌰:
 
-* 百度地图sdk测试环境和生产还有开发环境是不一样的key（我们去请求第三方sdk接口的时候需要带上的一个身份信息）
+* 百度地图sdk测试环境和生产还有开发环境用不同的key（我们去请求第三方sdk接口的时候需要带上的一个身份信息）
 
 * 我们在和后端同学对接的时候, 前端在开发环境中请求的后端API地址和生产环境的后端API前缀不一致
 
@@ -37,7 +37,7 @@ HELLO = hello
 
 在`vite.config.js`中获取env
 
-```js title='vite.config.js' {1}
+```js title='vite.config.js' {2}
 export default defineConfig(({command})=>{
     console.log(process.env)
     return envResolver[command]()
@@ -46,7 +46,7 @@ export default defineConfig(({command})=>{
 
 使用命令`yarn dev`启动后，打印中并没有`HELLO`这个环境变量，调用vite的loadEnv来手动确认env文件
 
-```js title='vite.config.js' {1}
+```js title='vite.config.js' {2-6}
 export default defineConfig(({command,mode})=>{
     // loadEnv(mode: string, envDir: string, prefixes?: string | string[] | undefined): Record<string, string>
     // 第三个为前缀，为空表示所有的
@@ -81,7 +81,7 @@ export default defineConfig(({command,mode})=>{
 
 我们可以创建一个`.env.test`文件
 
-使用`yarn dev --mode test`启动项目，则会自动匹配到`.env.test`文件，并获取到其内部的配置
+使用`yarn dev --mode test`启动项目，则会自动匹配到`.env.test`文件，并获取到其内部的配置，此时的mode就是test
 
 ## 客户端获取环境变量
 
@@ -89,10 +89,15 @@ vite会将对应的环境变量注入到`import.meta.env`下
 
 但是vite做了一个拦截, 为了防止我们将隐私性的变量直接送进`import.meta.env`中, 所以他做了一层拦截, 默认如果你的环境变量不是以VITE开头的, 他就不会帮你注入到客户端中去, 如果我们想要更改这个前缀, 可以去使用envPrefix配置
 
-直接打印效果如下：
+`.env.test`配置如下
 
 ```
-console.log(import.meta.env)
+VITE_TEST = test
+ABC_HI = hi
+```
+
+```js title="main.js"
+console.log(import.meta.env); //打印了VITE前缀的配置
 ```
 
 ![image-20221023141537172](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210231415226.png!blog.guiyexing)
@@ -104,18 +109,16 @@ console.log(import.meta.env)
  * @type import("vite").UserConfig
  */
 const viteBaseConfig = {
-    envPrefix:"ENV_"
+    envPrefix:"ABC_"
 }
 export default viteBaseConfig
 ```
 
-只有将`.env.test`中环境变量的前缀改为配置好的才能注入客户端
-
-![image-20221023141839245](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210231418278.png!blog.guiyexing)
+![image-20221026215830065](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210262158095.png!blog.guiyexing)
 
 补充一个小知识:
 
 为什么vite.config.js可以书写成esmodule的形式?
 
-这是因为vite他在读取这个vite.config.js的时候会率先node去解析文件语法, 如果发现你是esmodule规范会直接将你的esmodule规范进行替换变成commonjs规范
+这是因为vite他在读取这个vite.config.js的时候会率先去解析文件语法, 如果发现你是esmodule规范会直接将你的esmodule规范进行替换变成commonjs规范
 

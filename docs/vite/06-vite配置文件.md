@@ -1,10 +1,12 @@
 # vite 配置文件
 
+配置文件`vite.config.js`
+
 ## 语法提示
 
 配置方式一：
 
-defineConfig的入参出参都是UserConfigExport，利用ts的提示
+defineConfig的入参出参都是UserConfigExport，利用TS的提示
 
 ```js
 import { defineConfig } from "vite"
@@ -73,7 +75,7 @@ export default viteProdConfig
 
 配置`vite.config.js`
 
-```js
+```js title="vite.config.js" {6-16}
 import { defineConfig } from "vite"
 import viteBaseConfig from "./vite.base.config"
 import viteDevConfig from './vite.base.config'
