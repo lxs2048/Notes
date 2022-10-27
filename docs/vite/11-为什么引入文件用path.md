@@ -16,7 +16,7 @@ process.cwd: 获取当前的node执行目录
 
 ![image-20221024231418629](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210242314656.png!blog.guiyexing)
 
-所以，在Desktop中执行时，最终会被拼接为`/Users/dolphin/Desktop/main.js`
+所以，在Desktop中执行时，最终会被拼接为`/Users/dolphin/Desktop/variable.css`
 
 commonjs规范会往文件中注入几个变量如：
 
@@ -32,15 +32,15 @@ commonjs规范会往文件中注入几个变量如：
 
 ![image-20221024232246694](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210242322728.png!blog.guiyexing)
 
-`path.resolve`帮我们做了拼接，且我们不需要考虑环境的问题。
+如上所示，`path.resolve`帮我们做了拼接，我们不需要考虑环境的问题。
 
 ---
 
-最后稍微拓展node`commonjs模块化`
+最后稍微拓展`commonjs模块化`
 
 我们先引入一个模块
 
-```js
+```js title="main.js"
 const {hello} = require('./test')
 console.log(hello)
 ```
@@ -52,7 +52,7 @@ module.exports = {
 }
 ```
 
-这是正常的写法，然而Node在读取到文件以后会把内容放到一个立即执行函数里面，我们可以在`test.js`加一句`console.log(arguments)`，就会看到输出了如下数据：
+这是正常的写法，然而**Node在读取到文件以后会把内容放到一个立即执行函数里面**，我们可以在`test.js`加一句`console.log(arguments)`，就会看到输出了如下数据：
 
 ```js
 [Arguments] {

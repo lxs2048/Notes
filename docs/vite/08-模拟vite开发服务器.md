@@ -1,22 +1,12 @@
 # 模拟vite开发服务器
 
-浏览器怎么识别到.tsx文件的?
-
-```
-yarn create vite
-```
-
-yarn create 实际上就等于在安装create-vite脚手架 然后使用脚手架的指令去构建项目
-
-在项目开发的时候看到了这样的请求
+在项目开发的时候看到了这样的请求，那浏览器怎么识别到.tsx文件的?
 
 ![image-20221023185843693](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210231858726.png!blog.guiyexing)
 
 接下来我们来实现一套简单的vite的开发服务器
 
-使用koa: node端的一个框架
-
-我们创建一个项目：
+使用node端的koa框架创建项目：
 
 ```
 mkdir vite-dev-server
@@ -84,17 +74,13 @@ app.listen(5173, () => {
 console.log('main.js')
 ```
 
-访问服务可以看到main.js被打印
+`npm run dev`，然后访问服务可以看到main.js被打印
 
 ![image-20221023192801227](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210231928266.png!blog.guiyexing)
 
 测试tsx结尾请求：
 
-我们在main中增加导入App.tsx
-
-```js title="main.js"
-import './App.tsx'
-```
+我们在main中增加导入`import './App.tsx'`
 
 ```js title="App.tsx"
 console.log('App.tsx')
@@ -110,7 +96,9 @@ if (ctx.request.url === "/App.tsx") {
 }
 ```
 
-这样就可以看到生成了类似的请求信息
+![image-20221026221241737](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210262212782.png!blog.guiyexing)
+
+main.js中的响应里有一个导入的字符串，这样就会生成`http://localhost:5173/App.tsx`的请求
 
 ![image-20221023192349383](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210231923415.png!blog.guiyexing)
 

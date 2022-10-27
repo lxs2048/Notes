@@ -40,11 +40,11 @@ import './src/imageLoader'
 
 ![image-20221025001332205](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210250013249.png!blog.guiyexing)
 
-我们打印cat，发现他是一个字符串：`/src/assets/images/cat.png`
+我们打印cat变量，发现他是一个字符串：`/src/assets/images/cat.png`
 
 服务端在发现用户请求图片资源时，他会去读取这个图片文件的内容，他读到的是二进制字符串Buffer
 
-## 加载JSON
+## 加载JSON(tree shaking)
 
 ```js title="main.js"
 import './src/imageLoader'
@@ -52,7 +52,7 @@ import testJSON from './src/assets/json/test.json'
 console.log(testJSON,JSON.stringify(testJSON))
 ```
 
-如果你用的不是vite,在其他的一些构建工具里json文件的导入会作为一个JSON字符串形式存在，并且在解构时也有提示
+在其他的一些构建工具里json文件的导入可能会作为一个JSON字符串形式存在，vite帮我们做了解析，并且在解构时也会有提示
 
 ![image-20221025002225318](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202210250022354.png!blog.guiyexing)
 
@@ -71,7 +71,7 @@ _.sortBy()
 
 tree shaking 摇树优化: 打包工具会自动帮你移除掉那些你没有用到的变量或者方法
 
-所以如果生产环境非常的臃肿和性能差，可以考虑的一个点就是`控制导入`
+所以如果生产环境非常的臃肿和性能差，可以考虑的一个点就是**控制导入**
 
 ## 加载SVG
 

@@ -8,7 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"), // 设置别名, 在其他组件中可以使用@来代替src这个目录
-      "@assets": path.resolve(__dirname, "./src/assets"), // 设置别名, 在其他组件中可以使用@来代替src这个目录
+      "@assets": path.resolve(__dirname, "./src/assets"),
     }
   },
 })
