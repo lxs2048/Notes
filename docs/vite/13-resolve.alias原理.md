@@ -106,3 +106,54 @@ console.log('hi.js')
 **本质是字符串的replace操作**
 
 **本质是字符串的replace操作**
+
+## 局限性
+
+后续看了前面写的处理函数存在问题
+
+1. 使用replace只能替换一个第一个匹配到的
+
+2. 匹配方式有问题，配置有`@`,`@assets`，然后导入方式`import "@/hello.js";import "@assets/hi.js"`，遍历的时候匹配了第一个`@`，只替换第一个，然后进入下一轮循环，匹配第一个`@assets`，刚好可以解析
+
+3. 如果我调换顺序`import "@assets/hi.js";import "@/hello.js"`，解析结果就会变成
+   ```js
+   import "/srcassets/hi.js"
+   import "@/hello.js"
+   ```
+
+   第一次匹配到`@`替换，第一次变量匹配不到`@assets`
+
+所以，我的理解是要兼容配置中的单独一个@的配置，在替换的时候需要加一个后缀如匹配`@/`，`@assets/`进行全量替换
+
+```js
+function aliasResolver(aliasConf, JSContent) {
+    let lastContent = JSContent;
+    const entires = Object.entries(aliasConf);
+    entires.forEach(entire => {
+        const [alia, path] = entire;
+        console.log(entire)
+        // 会做path的相对路径的处理-官方使用的更复杂全面
+        const srcIndex = path.indexOf("/src");
+        // alias别名最终做的事情就是一个字符串替换
+        const realPath = path.slice(srcIndex, path.length);
+        lastContent = lastContent.replaceAll(alia+'/', realPath+'/');
+    })
+    return lastContent;
+}
+```
+
+注意：nodejs 15.X开始支持replaceAll方法
+
+nodejs14.X以下replaceAll的处理方法：
+
+将searchValue中的元素aaa替换成bbbb
+
+```js
+searchValue.split(aaa).join(bbbb);
+
+let pattern = new RegExp(aaa,"g");
+searchValue.replace(pattern,bbb)
+```
+
+
+
