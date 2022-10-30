@@ -8,11 +8,11 @@
 
 社区插件：https://github.com/vitejs/awesome-vite#plugins
 
+## 自动别名测试
+
 [vite-aliases](https://github.com/subwaytime/vite-aliases) - Alias auto-generation based on project structure.
 
 vite-aliases可以帮助我们自动生成别名: **检测你当前目录下包括src在内的所有文件夹, 并帮助我们去生成别名**
-
-## 自动别名测试
 
 我们在`test-vite`进行一些测试
 
@@ -127,7 +127,7 @@ module.exports = ({
 }
 ```
 
-开始配置
+在vite配置我们自己的插件
 
 ```js
 import MyViteAliases from "./plugins/MyViteAliases"

@@ -125,13 +125,12 @@ console.log('hi.js')
 
 所以，我的理解是要兼容配置中的单独一个@的配置，在替换的时候需要加一个后缀如匹配`@/`，`@assets/`进行全量替换
 
-```js
+```js {10}
 function aliasResolver(aliasConf, JSContent) {
     let lastContent = JSContent;
     const entires = Object.entries(aliasConf);
     entires.forEach(entire => {
         const [alia, path] = entire;
-        console.log(entire)
         // 会做path的相对路径的处理-官方使用的更复杂全面
         const srcIndex = path.indexOf("/src");
         // alias别名最终做的事情就是一个字符串替换
@@ -154,6 +153,3 @@ searchValue.split(aaa).join(bbbb);
 let pattern = new RegExp(aaa,"g");
 searchValue.replace(pattern,bbb)
 ```
-
-
-
