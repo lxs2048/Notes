@@ -3,7 +3,7 @@
 require('dotenv').config();
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-const GITHUB_NAME = 'hyodage'
+const GITHUB_NAME = 'lxs2048'
 const PRO_NAME = 'Notes'
 const PREFIX = 'blob/main'
 const PRO_URL = `https://github.com/${GITHUB_NAME}/${PRO_NAME}/${PREFIX}`

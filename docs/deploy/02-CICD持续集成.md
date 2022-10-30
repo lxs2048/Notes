@@ -44,7 +44,7 @@ pism
 
 Build, test, and deploy your code. Make code reviews, branch management, and issue triaging work the way you want. Select a workflow to get started.
 
-Skip this and [set up a workflow yourself ](https://github.com/hyodage/pism/new/main?filename=.github%2Fworkflows%2Fmain.yml&workflow_template=blank)
+Skip this and [set up a workflow yourself ](https://github.com/lxs2048/pism/new/main?filename=.github%2Fworkflows%2Fmain.yml&workflow_template=blank)
 
 2. 点击 set up a workflow yourself
 

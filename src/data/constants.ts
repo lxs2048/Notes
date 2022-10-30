@@ -125,9 +125,9 @@ const allMenuData: AllMenuData = {
 const github = "Github"
 const email = "Email";
 const wechat = "WeChat";
-const GITHUB_LINK = "https://github.com/hyodage";
+const GITHUB_LINK = "https://github.com/lxs2048";
 const EMAIL_ADDRESS = "lxs2048@sina.com";
-const WECHAT_ACCOUNT = "hyodage";
+const WECHAT_ACCOUNT = "lxs2048";
 
 interface ContactMeData {
   readonly github: string;
