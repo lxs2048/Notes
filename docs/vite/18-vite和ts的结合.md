@@ -93,3 +93,25 @@ interface ImportMetaEnv {
 为什么我们在vite.config.js里可以使用esmodule:
 
 主要是因为vite在读取配置文件并执行的前一刻会进行替换
+
+## 模块解析方案
+
+现在vite也是ts不知道你的模块解析方案是什么，所以在`main.ts`导入第三方包的时候会给出如下提示：
+
+![image-20221101221327496](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202211012213538.png!blog.guiyexing)
+
+提示我们把`compilerOptions.moduleResolution`设置为`node`，配置模块解析方案为node，就会去`node_modules`里面去找了，找到就不会有错误提示了
+
+然后这个时候会提示我们没有声明文件
+
+![image-20221101222054062](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202211012220095.png!blog.guiyexing)
+
+假设我们在安装某个库以后没有ts的类型声明，所以可以需要根据提示去安装包
+
+```
+npm i --save-dev @types/lodash
+```
+
+后续导包也会有提示
+
+![image-20221101222536975](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202211012225010.png!blog.guiyexing)
