@@ -3,7 +3,7 @@ slug: placement-scheme
 title: 理解响应式与自适应
 authors: [dolphin]
 tags: [响应式,自适应,栅格]
-date: 2022-11-6T20:49
+date: 2022-11-06T20:49
 ---
 
 ## 理解响应式与自适应
