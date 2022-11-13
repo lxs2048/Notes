@@ -372,3 +372,25 @@ while(line = readline()){
     print(ret)
 }
 ```
+
+**环境问题**：`nodejs 15.X开始支持replaceAll方法`
+
+试计算在区间1 到n 的所有整数中，数字x（0 ≤ x ≤ 9）共出现了多少次？  
+
+例如，在1到11 中，即在1、2、3、4、5、6、7、8、9、10、11 中，数字1 出现了4 次。
+
+```js
+while(line = readline()){
+    const [n,x] = line.split(' ').map(Number)
+    let ret = 0
+    for(let i=1;i<=n;i++){
+        let str = i.toFixed()
+       // nodejs 15.X开始支持replaceAll方法
+        // let add = str.length - str.replaceAll(x,'').length
+        let pattern = new RegExp(x,"g")
+        let add = str.length - str.replace(pattern,'').length
+        ret += add
+    }
+    print(ret)
+}
+```

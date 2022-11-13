@@ -70,3 +70,6 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
 
 ![image-20221113122746938](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202211131227967.png!blog.guiyexing)
 
+测试
+
+![image-20221113183608984](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202211131836021.png!blog.guiyexing)
