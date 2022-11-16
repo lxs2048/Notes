@@ -469,15 +469,10 @@ git push origin --delete [标签名]
 ## 远程新增分支拉取代码开发步骤
 
 0. 远程新增abc分支
-
 1. git fetch // 将远程仓库的分支列表更新到最新，取回本地以便查看远程分支列表
-
 2. git branch -a   // 查看全部本地远程分支列表
-
 3. git checkout -b my_abc origin/abc   // 核心一步：将远程仓库的origin/abc分支拉取到本地my_abc分支，并切换到my_abc分支
-
-4. git push --set-upstream origin abc_dol //首次提交
-
+4. git push --set-upstream origin abc_dol //首次提交=>简写：git push origin HEAD -u
 5. New merge request
 
 ## 回滚操作
