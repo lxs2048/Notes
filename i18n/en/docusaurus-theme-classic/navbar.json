@@ -3,9 +3,9 @@
     "message": "Better",
     "description": "The title in the navbar"
   },
-  "item.label.分类专栏": {
+  "item.label.专栏": {
     "message": "Category",
-    "description": "Navbar item with label 分类专栏"
+    "description": "Navbar item with label 专栏"
   },
   "item.label.博客": {
     "message": "Blog",

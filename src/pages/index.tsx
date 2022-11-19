@@ -87,7 +87,7 @@ function HomepageHeader({ isMobileDevice }: HomepageHeaderProps): JSX.Element {
                 "button--md",
                 styles.heroTextButton
               )}
-              to="/blog"
+              to="/docs/category/部署"
             >
               {TO_WIKI_BUTTON_TEXT}
             </Link>

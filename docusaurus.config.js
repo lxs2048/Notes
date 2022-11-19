@@ -90,7 +90,7 @@ const config = {
             type: 'doc',
             docId: '/category/部署',
             position: 'right',
-            label: '分类专栏',
+            label: '专栏',
           },
           {to: '/blog', label: '博客', position: 'right'},
           // {
