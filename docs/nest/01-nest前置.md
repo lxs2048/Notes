@@ -308,3 +308,74 @@ debugNow("404");
 总结：
 
 柯里化是一种转换，将 f(a,b,c) 转换为可以被以 f(a)(b)(c) 的形式进行调用，如果参数数量不足，则返回偏函数。
+
+## RxJS
+
+在Nestjs已经内置了RxJs无需安装，并且Nestjs也会有一些基于Rxjs提供的API
+
+[RxJS中文文档](https://cn.rx.js.org/manual/overview.html)
+
+![image-20221120104749976](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202211201047023.png!blog.guiyexing)
+
+下面看一些示例，更多参加官网
+
+一、类似于迭代器next 发出通知complete通知完成，subscribe订阅observable发出的通知，也就是一个观察者
+
+```ts
+import {Observable} from 'rxjs'
+const observable = new Observable(subscriber=>{
+    subscriber.next(1)
+    subscriber.next(2)
+    subscriber.next(3)
+    setTimeout(()=>{
+        subscriber.next(5)
+        subscriber.complete()
+    },1000)
+    subscriber.next(4)
+})
+
+observable.subscribe({
+    next:(value)=>{
+       console.log(value)
+    }
+})
+```
+
+二、`interval`五百毫秒执行一次`pipe`就是管道的意思，使用map和filter去处理和过滤数据， 最后通过观察者subscribe接受回调，里面使用unsubscribe取消观察
+
+```ts
+import { interval } from "rxjs";
+import { map, filter } from 'rxjs/operators'
+
+const subs = interval(500)
+    .pipe(map(v => ({ num: v })), filter(v => (v.num % 2 == 0)))
+    .subscribe((e) => {
+        console.log(e)
+        if (e.num == 10) {
+            subs.unsubscribe()
+        }
+    })
+```
+
+三、操作dom，按照官网示例
+
+```ts
+useEffect(() => {
+  var button = document.querySelector('button');
+  const func = (e: MouseEvent) => console.log(e, '数据😎😎😎');
+  button?.addEventListener('click', func)
+  return () => {
+    button?.removeEventListener('click', func)
+  }
+}, [])
+useEffect(() => {
+  var button = document.querySelector('button') as HTMLButtonElement;
+  const dom = fromEvent(button, 'click')
+  const subs = dom.subscribe(e => {
+    console.log(e, '数据😎😎😎');
+  });
+  return () => {
+    subs.unsubscribe()
+  }
+}, [])
+```
