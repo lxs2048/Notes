@@ -74,7 +74,7 @@ consumer.apply(LoggerMiddleware).forRoutes({
 })
 ```
 
-我们还可以把整个UserController塞进去
+我们还可以把整个UserController塞进去，这里不能控制版本[参考](https://www.nestjs.com.cn/middlewares)
 
 ```ts title="user.module.ts" {2-3}
 consumer.apply(LoggerMiddleware).forRoutes(UserController);
