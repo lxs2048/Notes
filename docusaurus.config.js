@@ -46,6 +46,18 @@ const config = {
     'docusaurus-plugin-sass',
     'plugin-image-zoom'
   ],
+  themes: [
+    // https://github.com/easyops-cn/docusaurus-search-local
+    [
+        require.resolve("@easyops-cn/docusaurus-search-local"),
+        {
+          searchBarPosition:'auto',
+          highlightSearchTermsOnTargetPage: true,
+          language: ["en", "zh"],
+        },
+    ]
+  ],
+
   customFields:{
     authSourceCode:process.env.AUTHSOURCECODE
   },
