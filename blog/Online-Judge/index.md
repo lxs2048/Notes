@@ -285,8 +285,8 @@ console.log(Number.parseFloat('1.359578'));//字符串转浮点型：1.359578
 注意：toFixed(num)返回值为string
 
 ```js
-console.log((3.1/2).toFixed(1)) //1.55=>1.6
-console.log((2.9/2).toFixed(1)) //1.45=>1.4
+console.log((3.651).toFixed(1)) //3.7
+console.log((3.65).toFixed(1)) //3.6  51成双，5后面没有就不进位了
 ```
 
 **取余和取模**
@@ -326,16 +326,16 @@ String.fromCharCode(65);  // 'A'
 
 一、Number.parseInt(string , radix)
 
-字符串(只能由字母和数字组成)由低进制转高进制，如二进制转八进制，但是八进制不能转二进制，radix表示进制，取值2~36。
+解析一个字符串并返回指定基数的十进制整数，如果字符串中最大的一个值超过基数就返回NaN
 
 ```js
 Number.parseInt('010',8)//8
-Number.parseInt('20',2)//NaN，大转小NaN
+Number.parseInt('20',2)//NaN
 ```
 
 二、Number.toString(radix)
 
-这个函数只能将十进制数字转换为任意进制的字符串形式，同样，radix表示进制，取值2~36。
+将十进制数字转换为任意进制的字符串形式，同样，radix表示进制，取值2~36。
 
 ```js
 (10).toString(2)//"1010"转2进制

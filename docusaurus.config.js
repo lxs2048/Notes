@@ -30,6 +30,7 @@ const config = {
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
+  // 全文搜索逻辑： https://www.wangshenwei.com/multilingual-full-text-search/
   i18n: {
     defaultLocale: 'zh-CN',
     locales: ['zh-CN','en'],
