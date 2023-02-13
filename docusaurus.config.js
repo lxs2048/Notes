@@ -99,10 +99,10 @@ const config = {
           src: 'img/logo/logosc62eccf4c.png',
         },
         items: [
-          {to: '/preview', label: '预览', position: 'right'},
+          // {to: '/preview', label: '预览', position: 'right'},
           {
             type: 'doc',
-            docId: '/category/部署',
+            docId: 'deploy/docusaurus',
             position: 'right',
             label: '专栏',
           },
