@@ -22,3 +22,4 @@ yarn-error.log*
 
 #练习使用的文件夹
 .test
+.vscode

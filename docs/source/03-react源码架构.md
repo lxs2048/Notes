@@ -9,7 +9,7 @@ sidebar_position: 3
 react的核心思想用一个公式表示就是状态经过计算后返回新UI，即`ui=fn(state)`
 
 ```js
-// 生成一个update对象，这个update对象可能是首次渲染的时候创建的，也肯能是对比新老节点差异的时候创建的，交给reconcile函数处理也就是协调器会处理更新，计算出来一个新的状态，新的state交给commit函数去处理，在commit阶段会把副作用或者新的状态应用到真实的dom节点上，就生成了新的UI
+// 生成一个update对象，这个update对象可能是首次渲染的时候创建的，也可能是对比新老节点差异的时候创建的，交给reconcile函数处理也就是协调器会处理更新，计算出来一个新的状态，新的state交给commit函数去处理，在commit阶段会把副作用或者新的状态应用到真实的dom节点上，就生成了新的UI
 const state = reconcile(update);
 const UI = commit(state);
 ```
@@ -26,7 +26,7 @@ fn可以分为如下部分：
 
 react15没有Scheduler这部分，所有任务没有优先级，也不能中断，只能同步执行
 
-**Scheduler可以调度任务，以优先级级来执行回调。**
+**Scheduler可以调度任务，以优先级来执行回调。**
 
 要实现异步可中断的更新，需要浏览器指定一个时间，如果没有时间剩余了就需要暂停任务，requestIdleCallback存在兼容和触发不稳定的原因，react17中采用MessageChannel来实现。
 
