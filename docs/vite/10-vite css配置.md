@@ -2,7 +2,7 @@
 
 ## css基础配置
 
-在vite.config.js中我们通过`css`属性去控制真个vite对于css的处理行为
+在vite.config.js中我们通过`css`属性去控制整个vite对于css的处理行为
 
 `modules`是对css模块化的默认行为进行覆盖，`modules`配置最终会丢给`postcss modules`
 
@@ -240,7 +240,7 @@ import './test.less'
 console.log(count)
 ```
 
-当我们再次打开页面发现两者都没有编译，这是因为vite是按需加载解析完这个文件就不管了，遇到新的css又重新解析，但是之前解析过的全局变量他并没有保存，解析完就丢了，我们我们要做一个特使的处理，保证能够拿到，**不是在vite本身的配置中更新配置需重启**
+当我们再次打开页面发现两者都没有编译，这是因为vite是按需加载解析完这个文件就不管了，遇到新的css又重新解析，但是之前解析过的全局变量他并没有保存，解析完就丢了，我们我们要做一个特殊的处理，保证能够拿到，**不是在vite本身的配置中更新配置需重启**
 
 ```js title="postcss.config.js" {2,7-8}
 const postcssPresetEnv = require("postcss-preset-env");

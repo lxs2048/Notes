@@ -49,14 +49,14 @@ const config = {
   ],
   themes: [
     // https://github.com/easyops-cn/docusaurus-search-local
-    [
-        require.resolve("@easyops-cn/docusaurus-search-local"),
-        {
-          searchBarPosition:'auto',
-          highlightSearchTermsOnTargetPage: true,
-          language: ["en", "zh"],
-        },
-    ]
+    // [
+    //     require.resolve("@easyops-cn/docusaurus-search-local"),
+    //     {
+    //       searchBarPosition:'auto',
+    //       highlightSearchTermsOnTargetPage: true,
+    //       language: ["en", "zh"],
+    //     },
+    // ]
   ],
 
   customFields:{

@@ -18,7 +18,7 @@ export default defineConfig({
 
 基于模拟vite开发服务器`vite-dev-server`项目,我们进一步测试
 
-我们先在项目根目录创建一个`vite-config.js`文件，加入如下配置
+我们先在项目根目录创建一个`vite.config.js`文件，加入如下配置
 
 ```js
 const path = require("path");

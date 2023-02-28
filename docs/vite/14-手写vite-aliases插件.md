@@ -28,7 +28,7 @@ npm i vite-aliases@0.9.2 -D
 
 指定版本是因为当前`0.9.7`有https://github.com/Subwaytime/vite-aliases/issues/43错误
 
-在`vite-config.js`中配置插件
+在`vite.config.js`中配置插件
 
 ```js
 import { ViteAliases } from 'vite-aliases'

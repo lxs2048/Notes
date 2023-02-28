@@ -2,7 +2,7 @@
 
 我们平时说性能优化是在说什么东西?
 
-**开发时态的构建速度优化**： yarn dev/ yarn start敲下的一瞬间到呈现结果要占用多少时长
+**开发时态的构建速度优化**： yarn dev | yarn start敲下的一瞬间到呈现结果要占用多少时长
 
 - webpack在这方面下的功夫是很重：webpack4【cache-loader】，webpack5【cache选项，缓存loader的结果】 ( 如果两次构建源代码没有产生变化，则直接使用缓存不调用loader )，thread-loader开启多线程去构建....
 - vite是按需加载，所以我们不需要太注意这方面
