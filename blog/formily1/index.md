@@ -12,8 +12,8 @@ date: 2022-08-27T20:20
 
 ```tsx
 import React, { useEffect, useMemo } from 'react';
-import { Input, Switch } from '@chaoswise/ui';
-import { formily } from '@chaoswise/ui/formily';
+import { Input, Switch } from '@**/ui';
+import { formily } from '@**/ui/formily';
 const {
   SchemaForm,
   FormEffectHooks,
