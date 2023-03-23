@@ -8,6 +8,8 @@ date: 2022-10-18T20:49
 
 ## ACM模式输入输出
 
+[OJ说明文档](https://labfiles.acmcoder.com/ojhtml/index.html#/?id=%e6%80%bb%e4%bd%93%e8%af%b4%e6%98%8e)
+
 在机试时往往都需要用ACM模式，也就是需要自己处理输入和输出（注意：力扣为核心模式）。Javascript主要有`Javascript(V8)`和`Javascript(Node)`两种
 
 [OJ在线编程常见输入输出练习场](https://ac.nowcoder.com/acm/contest/5657)

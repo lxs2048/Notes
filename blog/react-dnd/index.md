@@ -14,6 +14,8 @@ npm i react-dnd react-dnd-html5-backend
 
 <!--truncate-->
 
+## react-dnd
+
 基础代码如下
 
 ```js
@@ -269,3 +271,50 @@ const CatdItem = styled('div')(({ isDragging }: { isDragging: boolean }) => ({
 最终效果如下：
 
 ![2022_07_30_21_57_36_90](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202208181623982.gif)
+
+## 原生
+
+参考：[菜鸟](https://www.runoob.com/html/html5-draganddrop.html)
+
+draggable使元素可拖动
+
+拖动事件ondragstart，函数里使用e.dataTransfer.setData() 设置类型和值
+
+drop事件的默认行为是以链接形式打开，ondragover内阻止默认行为 event.preventDefault() 来避免浏览器对数据的默认处理
+
+进行放置使用ondrop，通过ev.dataTransfer.getData();获取对应类型的值
+
+拖动位置的一般在ondragover内处理逻辑，生成的一般在ondrop里处理
+
+```html
+<body>
+    <div ondragover="dragover(event)" ondrop="dropEnd(event)">
+        hello
+    </div>
+    <div draggable="true" ondragstart="dragStart(event)">
+        world
+    </div>
+    <script>
+        function dropEnd(e){
+            e.preventDefault();
+            const data = JSON.parse(e.dataTransfer.getData('text/plain'))
+            console.dir(data)
+        }
+        function dragStart(e){
+            e.dataTransfer.setData("text/plain", JSON.stringify({a:1}))
+        }
+        function dragover(e){
+            e.preventDefault()
+        }
+
+    </script>
+</body>
+```
+
+## 案例
+
+github参考案例：https://github.com/AdolescentJou/react-dnd-demo
+
+重点：自定义预览，如在批量和单个拖拽的时候，自定义设置不同的样式（如：单个的时候展示多个的数据，多个的时候展示叠加的卡片，最上层展示第一个，右上角标记有几个），目前这个仓库还没有实现，不过组合一下还是可以实现的
+
+![image-20230323102937681](https://blog-guiyexing.oss-cn-qingdao.aliyuncs.com/blogImg/202303231029800.png!blog.guiyexing)
