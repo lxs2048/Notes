@@ -146,6 +146,18 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'Web3',
+      items:[
+        'web3/web3.0入门',
+        'web3/web3js上手',
+        'web3/编写智能合约',
+        'web3/web3js与合约程序',
+        'web3/交易所',
+        'web3/react与合约交互',
+      ]
+    },
+    {
+      type: 'category',
       label: '工具',
       items:[
         'tools/VPN',
