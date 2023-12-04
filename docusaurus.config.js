@@ -113,10 +113,10 @@ const config = {
           //   position: 'right',
           //   'aria-label': 'Github repository'
           // },
-          {
-            type: 'localeDropdown',
-            position: 'right',
-          },
+          // {
+          //   type: 'localeDropdown',
+          //   position: 'right',
+          // },
         ],
       },
       announcementBar: {
